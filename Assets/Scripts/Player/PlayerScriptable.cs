@@ -6,6 +6,6 @@ using UnityEngine;
 public class PlayerScriptable : ScriptableObject
 {
   public int health = 8;
-  // public potionOne;
-  // public potionTwo;
+  public PotionsScriptable potionOne;
+  public PotionsScriptable potionTwo;
 }
