@@ -79,4 +79,16 @@ public class Player : MonoBehaviour
   {
     Destroy(gameObject);
   }
+
+  // -------------------- Collision functions
+  private void OnCollisionEnter2D(Collision2D others)
+  {
+    if (others.gameObject.CompareTag("Enemy")) TakeDamage(1);
+    if (others.gameObject.layer == 6) isJumping = false;
+  }
+
+  private void OnCollisionExit2D(Collision2D others)
+  {
+    if (others.gameObject.layer == 6) isJumping = true;
+  }
 }
