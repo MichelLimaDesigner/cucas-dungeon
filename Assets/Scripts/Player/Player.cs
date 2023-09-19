@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
   public float jumpForce;
   private float move;
   public PlayerScriptable attributes;
+  public List<ItemScriptable> itemsList;
 
   // Actions controls
   private bool isJumping = false;
@@ -81,9 +82,26 @@ public class Player : MonoBehaviour
   }
 
   // -------------------- Invetory functions
-  private void AddNewItem()
+  public ItemScriptable FindItemByName(string itemName)
   {
-    Debug.Log("New item added");
+    ItemScriptable itemFound = itemsList.Find(item => item.itemName == itemName);
+    return itemFound;
+  }
+
+  public void AddItemToInventory(string itemName)
+  {
+    ItemScriptable itemFound = FindItemByName(itemName);
+
+    if (itemFound != null)
+    {
+      attributes.itemsInventory.Add(itemFound);
+
+      Debug.Log("Item adicionado ao inventário: " + itemFound.itemName);
+    }
+    else
+    {
+      Debug.Log("Item não encontrado para adicionar ao inventário.");
+    }
   }
 
   private void AddNewPotion()
@@ -113,7 +131,7 @@ public class Player : MonoBehaviour
     }
     else if (other.CompareTag("Item"))
     {
-      AddNewItem();
+      AddItemToInventory(other.gameObject.name);
       Destroy(other.gameObject); // Destrua o item após coletá-lo, se necessário
     }
   }

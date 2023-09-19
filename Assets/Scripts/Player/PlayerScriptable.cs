@@ -8,6 +8,6 @@ public class PlayerScriptable : ScriptableObject
   public int health = 8;
   public PotionsScriptable potionOne;
   public PotionsScriptable potionTwo;
-  public ItemScriptable[] itemsInventory;
-  public PotionsScriptable[] potionsInventory;
+  public List<ItemScriptable> itemsInventory;
+  public List<PotionsScriptable> potionsInventory;
 }
