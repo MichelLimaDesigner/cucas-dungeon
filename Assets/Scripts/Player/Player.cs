@@ -80,6 +80,18 @@ public class Player : MonoBehaviour
     Destroy(gameObject);
   }
 
+  // -------------------- Invetory functions
+  private void AddNewItem()
+  {
+    Debug.Log("New item added");
+  }
+
+  private void AddNewPotion()
+  {
+    Debug.Log("New potion added");
+  }
+
+
   // -------------------- Collision functions
   private void OnCollisionEnter2D(Collision2D others)
   {
@@ -90,5 +102,19 @@ public class Player : MonoBehaviour
   private void OnCollisionExit2D(Collision2D others)
   {
     if (others.gameObject.layer == 6) isJumping = true;
+  }
+
+  // -------------------- Trigger functions
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.CompareTag("Enemy"))
+    {
+      TakeDamage(1);
+    }
+    else if (other.CompareTag("Item"))
+    {
+      AddNewItem();
+      Destroy(other.gameObject); // Destrua o item após coletá-lo, se necessário
+    }
   }
 }
