@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   health: 8
+  maxItems: 12
   potionOne: {fileID: 0}
   potionTwo: {fileID: 0}
   itemsInventory: []

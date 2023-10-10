@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerScriptable : ScriptableObject
 {
   public int health = 8;
+  public int maxItems = 12;
   public PotionsScriptable potionOne;
   public PotionsScriptable potionTwo;
   public List<ItemScriptable> itemsInventory;

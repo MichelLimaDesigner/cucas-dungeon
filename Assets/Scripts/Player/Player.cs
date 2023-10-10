@@ -11,14 +11,18 @@ public class Player : MonoBehaviour
   private float move;
   public PlayerScriptable attributes;
   public List<ItemScriptable> itemsList;
+  private bool canShoot = true;
 
   // Actions controls
   private bool isJumping = false;
   private float direction;
   private bool isFacingRight = true;
 
-  // Components
+  // Components and Objects
   private Rigidbody2D rig;
+  public Transform firePoint;
+  public GameObject bulletPrefab;
+
 
   // Start is called before the first frame update
   void Start()
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour
     Move();
     Flip();
     Jump();
+    Shoot();
   }
 
   // -------------------- Player moviment
@@ -79,6 +84,25 @@ public class Player : MonoBehaviour
   void Die()
   {
     Destroy(gameObject);
+  }
+
+  // -------------------- Attack and Items functions
+
+  void Shoot()
+  {
+    if (Input.GetButtonDown("Fire1") && canShoot)
+    {
+      canShoot = false;
+      Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+      StartCoroutine(SetCanShoot(1));
+    }
+  }
+
+  IEnumerator SetCanShoot(int time)
+  {
+    yield return new WaitForSeconds(time);
+
+    canShoot = true;
   }
 
   // -------------------- Invetory functions
