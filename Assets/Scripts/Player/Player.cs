@@ -156,7 +156,6 @@ public class Player : MonoBehaviour
     else if (other.CompareTag("Item"))
     {
       AddItemToInventory(other.gameObject.name);
-      Destroy(other.gameObject); // Destrua o item após coletá-lo, se necessário
     }
   }
 }
