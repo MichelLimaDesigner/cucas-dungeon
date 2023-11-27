@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
   private bool isJumping = false;
   private float direction;
   private bool isFacingRight = true;
+  private bool jumpInputReleased;
 
   // Components and Objects
   private Rigidbody2D rig;
@@ -33,8 +34,12 @@ public class Player : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    // -------------------- Variables
     move = Input.GetAxis("Horizontal");
-    // Moviment
+    jumpInputReleased = Input.GetButtonUp("Jump");
+
+
+    // -------------------- Methods
     Move();
     Flip();
     Jump();
@@ -64,9 +69,18 @@ public class Player : MonoBehaviour
 
   void Jump()
   {
+    Vector2 velocity = rig.velocity;
+
     if (Input.GetButtonDown("Jump") && !isJumping)
     {
-      rig.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+      velocity.y = jumpForce;
+      rig.velocity = velocity;
+    }
+
+    if (jumpInputReleased && rig.velocity.y > 0)
+    {
+      velocity.y = 0;
+      rig.velocity = velocity;
     }
   }
 
