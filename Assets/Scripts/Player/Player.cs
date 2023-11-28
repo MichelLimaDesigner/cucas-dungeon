@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-  // Player properties
+  // -------------------- Player properties
   public float speed;
   public float jumpForce;
   private float move;
@@ -13,25 +13,31 @@ public class Player : MonoBehaviour
   public List<ItemScriptable> itemsList;
   private bool canShoot = true;
 
-  // Actions controls
+  // -------------------- Actions controls
   private bool isJumping = false;
   private float direction;
   private bool isFacingRight = true;
   private bool jumpInputReleased;
+  private bool active = true;
+  private Vector2 respawnPoint;
 
-  // Components and Objects
+  // -------------------- Components and Objects
   private Rigidbody2D rig;
+  private Collider2D playerCollider;
   public Transform firePoint;
   public GameObject bulletPrefab;
 
 
-  // Start is called before the first frame update
+  // -------------------- Start is called before the first frame update
   void Start()
   {
     rig = GetComponent<Rigidbody2D>();
+    playerCollider = GetComponent<Collider2D>();
+
+    SetRespawnPoint(transform.position);
   }
 
-  // Update is called once per frame
+  // -------------------- Update is called once per frame
   void Update()
   {
     // -------------------- Variables
@@ -44,6 +50,12 @@ public class Player : MonoBehaviour
     Flip();
     Jump();
     Shoot();
+
+    // -------------------- Return if player die's
+    if (!active)
+    {
+      return;
+    }
   }
 
   // -------------------- Player moviment
@@ -84,20 +96,46 @@ public class Player : MonoBehaviour
     }
   }
 
-  // -------------------- Damage and Die
-  public void TakeDamage(int playerDamage)
-  {
-    attributes.health -= playerDamage;
+  // -------------------- Die and Respawn
 
-    if (attributes.health <= 0)
+
+  public void SetRespawnPoint(Vector2 position)
+  {
+    respawnPoint = position;
+  }
+
+  private IEnumerator Respawn()
+  {
+    yield return new WaitForSeconds(1f);
+    transform.position = respawnPoint;
+    active = true;
+    playerCollider.enabled = true;
+    DieMiniJump();
+  }
+
+  public void TakeDamage()
+  {
+    bool hasShield = false;
+
+    if (!hasShield)
     {
       Die();
     }
   }
 
-  void Die()
+  private void DieMiniJump()
   {
-    Destroy(gameObject);
+    Vector2 velocity = rig.velocity;
+    velocity.y = jumpForce / 2;
+    rig.velocity = velocity;
+  }
+
+  public void Die()
+  {
+    active = false;
+    playerCollider.enabled = false;
+    DieMiniJump();
+    StartCoroutine(Respawn());
   }
 
   // -------------------- Attack and Items functions
@@ -151,7 +189,7 @@ public class Player : MonoBehaviour
   // -------------------- Collision functions
   private void OnCollisionEnter2D(Collision2D others)
   {
-    if (others.gameObject.CompareTag("Enemy")) TakeDamage(1);
+    if (others.gameObject.CompareTag("Enemy")) TakeDamage();
     if (others.gameObject.layer == 6) isJumping = false;
   }
 
@@ -163,9 +201,9 @@ public class Player : MonoBehaviour
   // -------------------- Trigger functions
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Enemy"))
+    if (other.CompareTag("Death"))
     {
-      TakeDamage(1);
+      TakeDamage();
     }
     else if (other.CompareTag("Item"))
     {
