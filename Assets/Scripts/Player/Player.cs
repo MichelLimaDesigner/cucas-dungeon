@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-  // -------------------- Player properties
+  // -------------------- Player attributes
+  [Header("Player Attributes")]
   public float speed;
   public float jumpForce;
   private float move;
@@ -26,14 +27,21 @@ public class Player : MonoBehaviour
   private Collider2D playerCollider;
   public Transform firePoint;
   public GameObject bulletPrefab;
+  private TrailRenderer trailRenderer;
 
+  // -------------------- Dashing properties
+  private float dashingVelocity = 8f;
+  private float dashingTime = 0.3f;
+  private Vector2 dashingDir;
+  private bool isDashing = false;
+  private bool canDash = true;
 
   // -------------------- Start is called before the first frame update
   void Start()
   {
     rig = GetComponent<Rigidbody2D>();
     playerCollider = GetComponent<Collider2D>();
-
+    trailRenderer = GetComponent<TrailRenderer>();
     SetRespawnPoint(transform.position);
   }
 
@@ -42,6 +50,7 @@ public class Player : MonoBehaviour
   {
     // -------------------- Variables
     move = Input.GetAxis("Horizontal");
+
     jumpInputReleased = Input.GetButtonUp("Jump");
 
 
@@ -50,6 +59,7 @@ public class Player : MonoBehaviour
     Flip();
     Jump();
     Shoot();
+    Dash();
 
     // -------------------- Return if player die's
     if (!active)
@@ -96,9 +106,48 @@ public class Player : MonoBehaviour
     }
   }
 
+  // -------------------- Dashing
+
+  private void Dash()
+  {
+    if (Input.GetButtonDown("Dash") && canDash)
+    {
+      isDashing = true;
+      canDash = false;
+      trailRenderer.emitting = true;
+      dashingDir = new Vector2(move, Input.GetAxisRaw("Vertical"));
+
+      if (dashingDir == Vector2.zero)
+      {
+        dashingDir = new Vector2(transform.localScale.x, 0);
+      }
+
+      StartCoroutine(StopDashing());
+    }
+
+    if (isDashing)
+    {
+      rig.velocity = dashingDir.normalized * dashingVelocity;
+      return;
+    }
+
+    // ------------------ Implementar 
+    // if(isGrounded)
+    // {
+    //   canDash = true;
+    // }
+  }
+
+
+  IEnumerator StopDashing()
+  {
+    yield return new WaitForSeconds(dashingTime);
+    trailRenderer.emitting = false;
+    isDashing = false;
+    canDash = true;
+  }
+
   // -------------------- Die and Respawn
-
-
   public void SetRespawnPoint(Vector2 position)
   {
     respawnPoint = position;
