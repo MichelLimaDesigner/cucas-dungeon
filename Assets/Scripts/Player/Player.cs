@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
   // -------------------- Actions controls
   private bool isJumping = false;
   private float direction;
+  private bool isGrounded;
   private bool isFacingRight = true;
   private bool jumpInputReleased;
   private bool active = true;
@@ -30,8 +31,8 @@ public class Player : MonoBehaviour
   private TrailRenderer trailRenderer;
 
   // -------------------- Dashing properties
-  private float dashingVelocity = 8f;
-  private float dashingTime = 0.3f;
+  private float dashingVelocity = 7f;
+  private float dashingTime = 0.16f;
   private Vector2 dashingDir;
   private bool isDashing = false;
   private bool canDash = true;
@@ -115,7 +116,25 @@ public class Player : MonoBehaviour
       isDashing = true;
       canDash = false;
       trailRenderer.emitting = true;
-      dashingDir = new Vector2(move, Input.GetAxisRaw("Vertical"));
+      float dir;
+
+      // Quando o jogador está parado
+      if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+      {
+        dir = isFacingRight ? 1f : -1f;
+      }
+      // Quando o jogador usa o dash para cima ou para baixo
+      else if (Input.GetAxisRaw("Horizontal") == 0)
+      {
+        dir = 0f;
+      }
+      // Quando o jogador está apontando uma direção
+      else
+      {
+        dir = move;
+      }
+
+      dashingDir = new Vector2(dir, Input.GetAxisRaw("Vertical"));
 
       if (dashingDir == Vector2.zero)
       {
@@ -144,7 +163,10 @@ public class Player : MonoBehaviour
     yield return new WaitForSeconds(dashingTime);
     trailRenderer.emitting = false;
     isDashing = false;
-    canDash = true;
+    if (isGrounded)
+    {
+      canDash = true;
+    }
   }
 
   // -------------------- Die and Respawn
@@ -176,6 +198,7 @@ public class Player : MonoBehaviour
   {
     Vector2 velocity = rig.velocity;
     velocity.y = jumpForce / 2;
+    velocity.x = 0;
     rig.velocity = velocity;
   }
 
@@ -239,12 +262,22 @@ public class Player : MonoBehaviour
   private void OnCollisionEnter2D(Collision2D others)
   {
     if (others.gameObject.CompareTag("Enemy")) TakeDamage();
-    if (others.gameObject.layer == 6) isJumping = false;
+    // Player is on ground
+    if (others.gameObject.layer == 6)
+    {
+      isJumping = false;
+      isGrounded = true;
+      if (!isDashing) canDash = true;
+    }
   }
 
   private void OnCollisionExit2D(Collision2D others)
   {
-    if (others.gameObject.layer == 6) isJumping = true;
+    if (others.gameObject.layer == 6)
+    {
+      isJumping = true;
+      isGrounded = false;
+    }
   }
 
   // -------------------- Trigger functions
