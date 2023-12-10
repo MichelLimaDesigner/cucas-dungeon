@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
   private bool isJumping = false;
   private float direction;
   private bool isGrounded;
-  private bool isFacingRight = true;
+  public bool isFacingRight = true;
   private bool jumpInputReleased;
   private bool active = true;
   private Vector2 respawnPoint;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
   private Collider2D playerCollider;
   public Transform firePoint;
   public GameObject bulletPrefab;
-  private TrailRenderer trailRenderer;
+  public TrailRenderer trailRenderer;
 
   // -------------------- Dashing properties
   [Header("Dashing")]

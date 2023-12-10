@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Item
   - Death
+  - Portal
   layers:
   - Default
   - TransparentFX
