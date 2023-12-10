@@ -31,8 +31,9 @@ public class Player : MonoBehaviour
   private TrailRenderer trailRenderer;
 
   // -------------------- Dashing properties
-  private float dashingVelocity = 7f;
-  private float dashingTime = 0.16f;
+  [Header("Dashing")]
+  public float dashingVelocity = 5f;
+  public float dashingTime = 0.1f;
   private Vector2 dashingDir;
   private bool isDashing = false;
   private bool canDash = true;
@@ -98,6 +99,7 @@ public class Player : MonoBehaviour
     {
       velocity.y = jumpForce;
       rig.velocity = velocity;
+      isJumping = true;
     }
 
     if (jumpInputReleased && rig.velocity.y > 0)
@@ -163,6 +165,9 @@ public class Player : MonoBehaviour
     yield return new WaitForSeconds(dashingTime);
     trailRenderer.emitting = false;
     isDashing = false;
+    var velocity = rig.velocity;
+    velocity.x = 0;
+    rig.velocity = velocity;
     if (isGrounded)
     {
       canDash = true;
@@ -275,7 +280,6 @@ public class Player : MonoBehaviour
   {
     if (others.gameObject.layer == 6)
     {
-      isJumping = true;
       isGrounded = false;
     }
   }
