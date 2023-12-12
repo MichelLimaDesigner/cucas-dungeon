@@ -17,23 +17,30 @@ public class Player : MonoBehaviour
   // -------------------- Actions controls
   private bool isJumping = false;
   private float direction;
-  private bool isGrounded;
   public bool isFacingRight = true;
   private bool jumpInputReleased;
   private bool active = true;
   private Vector2 respawnPoint;
 
   // -------------------- Components and Objects
+  [Header("Ground and wall system")]
+  private bool isGrounded;
+  private bool isWallTouch;
+  private bool isSliding;
+  public float wallSlidingSpeed;
+  public Transform groundCheck;
+  public Transform wallCheck;
+  public LayerMask groundLayer;
   private Rigidbody2D rig;
   private Collider2D playerCollider;
   public Transform firePoint;
   public GameObject bulletPrefab;
-  public TrailRenderer trailRenderer;
 
   // -------------------- Dashing properties
   [Header("Dashing")]
   public float dashingVelocity = 5f;
   public float dashingTime = 0.1f;
+  public TrailRenderer trailRenderer;
   private Vector2 dashingDir;
   private bool isDashing = false;
   private bool canDash = true;
@@ -52,16 +59,19 @@ public class Player : MonoBehaviour
   {
     // -------------------- Variables
     move = Input.GetAxis("Horizontal");
-
     jumpInputReleased = Input.GetButtonUp("Jump");
+    isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(0.33f, 0.12f), 0, groundLayer);
+    isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.20f, 0.73f), 0, groundLayer);
 
-
+    if (isWallTouch) isSliding = true;
+    else isSliding = false;
     // -------------------- Methods
     Move();
     Flip();
     Jump();
     Shoot();
     Dash();
+    WallSliding();
 
     // -------------------- Return if player die's
     if (!active)
@@ -106,6 +116,16 @@ public class Player : MonoBehaviour
     {
       velocity.y = 0;
       rig.velocity = velocity;
+    }
+  }
+
+  // -------------------- Wall Sligins
+
+  void WallSliding()
+  {
+    if (isSliding)
+    {
+      rig.velocity = new Vector2(rig.velocity.x, Mathf.Clamp(rig.velocity.y, -wallSlidingSpeed, float.MaxValue));
     }
   }
 
@@ -271,17 +291,13 @@ public class Player : MonoBehaviour
     if (others.gameObject.layer == 6)
     {
       isJumping = false;
-      isGrounded = true;
       if (!isDashing) canDash = true;
     }
   }
 
   private void OnCollisionExit2D(Collision2D others)
   {
-    if (others.gameObject.layer == 6)
-    {
-      isGrounded = false;
-    }
+    // Collision exit functions
   }
 
   // -------------------- Trigger functions
