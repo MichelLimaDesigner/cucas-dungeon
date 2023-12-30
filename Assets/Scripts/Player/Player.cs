@@ -211,9 +211,7 @@ public class Player : MonoBehaviour
 
   public void TakeDamage()
   {
-    bool hasShield = false;
-
-    if (!hasShield)
+    if (!attributes.hasShield)
     {
       Die();
     }
@@ -255,32 +253,32 @@ public class Player : MonoBehaviour
   }
 
   // -------------------- Invetory functions
-  public ItemScriptable FindItemByName(string itemName)
-  {
-    ItemScriptable itemFound = itemsList.Find(item => item.itemName == itemName);
-    return itemFound;
-  }
+  // public ItemScriptable FindItemByName(string itemName)
+  // {
+  //   ItemScriptable itemFound = itemsList.Find(item => item.itemName == itemName);
+  //   return itemFound;
+  // }
 
-  public void AddItemToInventory(string itemName)
-  {
-    ItemScriptable itemFound = FindItemByName(itemName);
+  // public void AddItemToInventory(string itemName)
+  // {
+  //   ItemScriptable itemFound = FindItemByName(itemName);
 
-    if (itemFound != null)
-    {
-      attributes.itemsInventory.Add(itemFound);
+  //   if (itemFound != null)
+  //   {
+  //     attributes.itemsInventory.Add(itemFound);
 
-      Debug.Log("Item adicionado ao inventário: " + itemFound.itemName);
-    }
-    else
-    {
-      Debug.Log("Item não encontrado para adicionar ao inventário.");
-    }
-  }
+  //     Debug.Log("Item adicionado ao inventário: " + itemFound.itemName);
+  //   }
+  //   else
+  //   {
+  //     Debug.Log("Item não encontrado para adicionar ao inventário.");
+  //   }
+  // }
 
-  private void AddNewPotion()
-  {
-    Debug.Log("New potion added");
-  }
+  // private void AddNewPotion()
+  // {
+  //   Debug.Log("New potion added");
+  // }
 
 
   // -------------------- Collision functions
@@ -309,7 +307,8 @@ public class Player : MonoBehaviour
     }
     else if (other.CompareTag("Item"))
     {
-      AddItemToInventory(other.gameObject.name);
+      Debug.Log(other.gameObject.name);
+      // AddItemToInventory(other.gameObject.name);
     }
   }
 }

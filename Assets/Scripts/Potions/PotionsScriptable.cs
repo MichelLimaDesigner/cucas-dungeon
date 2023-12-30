@@ -8,5 +8,6 @@ public class PotionsScriptable : ScriptableObject
   public string potionName;
   public string description;
   public Texture2D icon;
+  public Texture2D sprite;
   public GameObject potion;
 }
