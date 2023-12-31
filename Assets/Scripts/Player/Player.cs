@@ -15,14 +15,19 @@ public class Player : MonoBehaviour
   private bool canShoot = true;
 
   // -------------------- Actions controls
-  private bool isJumping = false;
   private float direction;
   public bool isFacingRight = true;
-  private bool jumpInputReleased;
+  private bool jump;
   private bool active = true;
   private Vector2 respawnPoint;
 
   // -------------------- Components and Objects
+  private Rigidbody2D rig;
+  private Collider2D playerCollider;
+  public Transform firePoint;
+  public GameObject bulletPrefab;
+
+  // -------------------- Ground & wall system
   [Header("Ground and wall system")]
   private bool isGrounded;
   private bool isWallTouch;
@@ -31,10 +36,10 @@ public class Player : MonoBehaviour
   public Transform groundCheck;
   public Transform wallCheck;
   public LayerMask groundLayer;
-  private Rigidbody2D rig;
-  private Collider2D playerCollider;
-  public Transform firePoint;
-  public GameObject bulletPrefab;
+  public float wallJumpDuration;
+  public Vector2 wallJumpForce;
+  bool wallJumping;
+
 
   // -------------------- Dashing properties
   [Header("Dashing")]
@@ -59,14 +64,13 @@ public class Player : MonoBehaviour
   {
     // -------------------- Variables
     move = Input.GetAxis("Horizontal");
-    jumpInputReleased = Input.GetButtonUp("Jump");
-    isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(0.33f, 0.12f), 0, groundLayer);
-    isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.20f, 0.73f), 0, groundLayer);
+    jump = Input.GetButtonUp("Jump");
+    isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(0.3f, 0.1f), 0, groundLayer);
+    isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.1f, 0.4f), 0, groundLayer);
 
-    if (isWallTouch) isSliding = true;
+    if (isWallTouch && !isGrounded && move != 0) isSliding = true;
     else isSliding = false;
     // -------------------- Methods
-    Move();
     Flip();
     Jump();
     Shoot();
@@ -78,6 +82,11 @@ public class Player : MonoBehaviour
     {
       return;
     }
+  }
+
+  private void FixedUpdate()
+  {
+    Move();
   }
 
   // -------------------- Player moviment
@@ -105,18 +114,36 @@ public class Player : MonoBehaviour
   {
     Vector2 velocity = rig.velocity;
 
-    if (Input.GetButtonDown("Jump") && !isJumping)
+    if (Input.GetButtonDown("Jump"))
     {
-      velocity.y = jumpForce;
-      rig.velocity = velocity;
-      isJumping = true;
+      if (isGrounded)
+      {
+        velocity.y = jumpForce;
+        rig.velocity = velocity;
+      }
+      else if (isSliding)
+      {
+        wallJumping = true;
+        Invoke("StopWallJump", wallJumpDuration);
+      }
     }
 
-    if (jumpInputReleased && rig.velocity.y > 0)
+    if (jump && rig.velocity.y > 0)
     {
       velocity.y = 0;
       rig.velocity = velocity;
     }
+
+    if (wallJumping)
+    {
+      rig.velocity = new Vector2(-move * wallJumpForce.x, wallJumpForce.y);
+    }
+
+  }
+
+  void StopWallJump()
+  {
+    wallJumping = false;
   }
 
   // -------------------- Wall Sligins
@@ -288,7 +315,6 @@ public class Player : MonoBehaviour
     // Player is on ground
     if (others.gameObject.layer == 6)
     {
-      isJumping = false;
       if (!isDashing) canDash = true;
     }
   }
