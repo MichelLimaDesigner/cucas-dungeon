@@ -9,15 +9,17 @@ public class PortalController : MonoBehaviour
   private Player playerScript;
   GameObject player;
 
-  private void Awake()
-  {
-    player = GameObject.FindGameObjectWithTag("Player");
-    playerScript = player.GetComponent<Player>();
-  }
+  // private void Awake()
+  // {
+  //   player = GameObject.FindGameObjectWithTag("Player");
+  //   playerScript = player.GetComponent<Player>();
+  // }
 
   private void OnTriggerEnter2D(Collider2D other)
   {
     if (other.CompareTag("Player"))
+      player = GameObject.FindGameObjectWithTag("Player");
+      playerScript = player.GetComponent<Player>();
     {
       if (Vector2.Distance(player.transform.position, transform.position) > 0.3f)
       {

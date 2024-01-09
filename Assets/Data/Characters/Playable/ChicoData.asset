@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc6cba8d67236a2479ede0d6f07f59d5, type: 3}
-  m_Name: PlayerData
+  m_Name: ChicoData
   m_EditorClassIdentifier: 
-  health: 8
-  maxItems: 12
-  potionOne: {fileID: 0}
-  potionTwo: {fileID: 0}
-  itemsInventory: []
+  characterName: Chico
+  avatar: {fileID: 0}
+  card: {fileID: 0}
+  prefab: {fileID: 8548190480868637026, guid: 3d98078acbcc79744aa10ff46671ed14, type: 3}
+  potion: {fileID: 0}
   potionsInventory: []
+  hasShield: 0
