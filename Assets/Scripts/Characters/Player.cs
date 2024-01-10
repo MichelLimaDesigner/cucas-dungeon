@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
   private float move;
   public PlayerScriptable attributes;
   public List<ItemScriptable> itemsList;
-  private bool canShoot = true;
 
   // -------------------- Actions controls
   private float direction;
@@ -75,7 +74,6 @@ public class Player : MonoBehaviour
     // -------------------- Methods
     Flip();
     Jump();
-    // Shoot();
     Dash();
     WallSliding();
 
@@ -264,25 +262,6 @@ public class Player : MonoBehaviour
     playerCollider.enabled = false;
     DieMiniJump();
     StartCoroutine(Respawn());
-  }
-
-  // -------------------- Attack and Items functions
-
-  void Shoot()
-  {
-    if (Input.GetButtonDown("Fire1") && canShoot)
-    {
-      canShoot = false;
-      Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-      StartCoroutine(SetCanShoot(1));
-    }
-  }
-
-  IEnumerator SetCanShoot(int time)
-  {
-    yield return new WaitForSeconds(time);
-
-    canShoot = true;
   }
 
   // -------------------- Invetory functions

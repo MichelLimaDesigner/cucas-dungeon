@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 8782744915224525515}
   - component: {fileID: 5123054385770490526}
   - component: {fileID: 8199717748922455561}
+  - component: {fileID: 7827442712488365009}
   m_Layer: 0
   m_Name: Joaquim
   m_TagString: Player
@@ -493,3 +494,17 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7827442712488365009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804479279739321955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13983c6d9ffb0064aa3a03d3ddb7f722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8805263037726854771, guid: 2b4d61acab519444c97a19338d3b0f93, type: 3}
+  firePoint: {fileID: 3441895160120805318}

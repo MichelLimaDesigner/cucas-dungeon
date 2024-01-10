@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
   void Start()
   {
     rig.velocity = transform.right * speed;
-    StartCoroutine(DestroyBullet(1.5f));
+    // StartCoroutine(DestroyBullet(1.5f));
   }
 
   IEnumerator DestroyBullet(float time)
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
     {
       enemy.TakeDamage(damage);
     }
-
-    Destroy(gameObject);
+    else if (other.CompareTag("Player")) return;
+    else Destroy(gameObject);
   }
 }
