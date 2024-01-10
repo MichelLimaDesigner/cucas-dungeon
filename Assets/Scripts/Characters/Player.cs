@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
   private Collider2D playerCollider;
   public Transform firePoint;
   public GameObject bulletPrefab;
-  public ChicoAttack chicoAttack;
+  ChicoAttack chicoAttack;
 
   // -------------------- Ground & wall system
   [Header("Ground and wall system")]
@@ -104,15 +104,15 @@ public class Player : MonoBehaviour
     {
       // Flip to Left
       isFacingRight = !isFacingRight;
-      transform.Rotate(0f, 180f, 0f);
       if (chicoAttack) chicoAttack.FlipSphereParent();
+      transform.Rotate(0f, 180f, 0f);
     }
     else if (move < 0 && isFacingRight)
     {
       // Flip to Right
       isFacingRight = !isFacingRight;
-      transform.Rotate(0f, 180f, 0f);
       if (chicoAttack) chicoAttack.FlipSphereParent();
+      transform.Rotate(0f, 180f, 0f);
     }
   }
 

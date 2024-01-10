@@ -47,7 +47,6 @@ public class ChicoAttack : MonoBehaviour
     {
       // Rotacionar em torno do eixo Z
       sphereParent.transform.Rotate(Vector3.forward * -rotationSpeed * Time.deltaTime);
-
       // Aguardar o próximo frame
       yield return null;
     }
