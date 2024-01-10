@@ -9,29 +9,25 @@ public class PortalController : MonoBehaviour
   private Player playerScript;
   GameObject player;
 
-  // private void Awake()
-  // {
-  //   player = GameObject.FindGameObjectWithTag("Player");
-  //   playerScript = player.GetComponent<Player>();
-  // }
-
   private void OnTriggerEnter2D(Collider2D other)
   {
     if (other.CompareTag("Player"))
-      player = GameObject.FindGameObjectWithTag("Player");
-      playerScript = player.GetComponent<Player>();
-    {
-      if (Vector2.Distance(player.transform.position, transform.position) > 0.3f)
+      if(GameObject.FindGameObjectWithTag("Player"))
       {
-        if (isHeightPortal) player.transform.position = portalDestination.transform.position;
-        else
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
+      {
+        if (Vector2.Distance(player.transform.position, transform.position) > 0.3f)
         {
-          var position = portalDestination.transform.position;
-          if (playerScript.isFacingRight) position.x += 1f;
-          else position.x -= 1f;
-          player.transform.position = position;
+          if (isHeightPortal) player.transform.position = portalDestination.transform.position;
+          else
+          {
+            var position = portalDestination.transform.position;
+            if (playerScript.isFacingRight) position.x += 1f;
+            else position.x -= 1f;
+            player.transform.position = position;
+          }
         }
-
       }
     }
   }

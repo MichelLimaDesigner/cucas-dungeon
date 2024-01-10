@@ -7,7 +7,9 @@ public class InstantDeath : MonoBehaviour
     var player = other.collider.GetComponent<Player>();
     if (player)
     {
-      player.Die();
+      Debug.Log(other);
+      // player.Die();
+      // player.TakeDamage();
     }
   }
 }

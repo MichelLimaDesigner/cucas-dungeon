@@ -9,6 +9,7 @@ TagManager:
   - Item
   - Death
   - Portal
+  - Attack
   layers:
   - Default
   - TransparentFX

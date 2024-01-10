@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
   private Collider2D playerCollider;
   public Transform firePoint;
   public GameObject bulletPrefab;
+  public ChicoAttack chicoAttack;
 
   // -------------------- Ground & wall system
   [Header("Ground and wall system")]
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
     playerCollider = GetComponent<Collider2D>();
     trailRenderer = GetComponent<TrailRenderer>();
     SetRespawnPoint(transform.position);
+    chicoAttack = GetComponent<ChicoAttack>();
   }
 
   // -------------------- Update is called once per frame
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
     // -------------------- Methods
     Flip();
     Jump();
-    Shoot();
+    // Shoot();
     Dash();
     WallSliding();
 
@@ -100,13 +102,17 @@ public class Player : MonoBehaviour
   {
     if (move > 0 && !isFacingRight)
     {
+      // Flip to Left
       isFacingRight = !isFacingRight;
       transform.Rotate(0f, 180f, 0f);
+      if (chicoAttack) chicoAttack.FlipSphereParent();
     }
     else if (move < 0 && isFacingRight)
     {
+      // Flip to Right
       isFacingRight = !isFacingRight;
       transform.Rotate(0f, 180f, 0f);
+      if (chicoAttack) chicoAttack.FlipSphereParent();
     }
   }
 
@@ -311,7 +317,7 @@ public class Player : MonoBehaviour
   // -------------------- Collision functions
   private void OnCollisionEnter2D(Collision2D others)
   {
-    if (others.gameObject.CompareTag("Enemy")) TakeDamage();
+    // if (others.gameObject.CompareTag("Enemy")) TakeDamage();
     // Player is on ground
     if (others.gameObject.layer == 6)
     {
@@ -327,11 +333,7 @@ public class Player : MonoBehaviour
   // -------------------- Trigger functions
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Death"))
-    {
-      TakeDamage();
-    }
-    else if (other.CompareTag("Item"))
+    if (other.CompareTag("Item"))
     {
       Debug.Log(other.gameObject.name);
       // AddItemToInventory(other.gameObject.name);

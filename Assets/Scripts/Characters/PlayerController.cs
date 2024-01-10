@@ -25,9 +25,9 @@ public class PlayerController : MonoBehaviour
     Instantiate(currentCharacter.prefab, spawnPoint.position, Quaternion.identity);
   }
 
-  void SaveCharacter()
+  public void SaveCharacter()
   {
-    // Adicionar um novo personagem a lista
+    // Adicionar ao script do player para poder adicionar um novo personagem a lista
   }
 
   void ChangeCharacter()
