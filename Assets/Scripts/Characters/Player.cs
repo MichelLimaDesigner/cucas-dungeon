@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
   // -------------------- Components and Objects
   private Rigidbody2D rig;
   private Collider2D playerCollider;
-  public Transform firePoint;
   public GameObject bulletPrefab;
   ChicoAttack chicoAttack;
 
