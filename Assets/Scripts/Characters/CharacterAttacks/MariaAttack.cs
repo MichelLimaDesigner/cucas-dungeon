@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoaquimAttack : MonoBehaviour
+public class MariaAttack : MonoBehaviour
 {
   private bool canShoot = true;
-  public GameObject bulletPrefab;
+  public GameObject bombPotionPrefab;
   public Transform firePoint;
 
   // Update is called once per frame
@@ -19,7 +19,7 @@ public class JoaquimAttack : MonoBehaviour
     if (Input.GetKeyDown(KeyCode.C) && canShoot)
     {
       canShoot = false;
-      Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+      Instantiate(bombPotionPrefab, firePoint.position, firePoint.rotation);
       StartCoroutine(SetCanShoot(1));
     }
   }

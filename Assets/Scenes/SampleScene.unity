@@ -293,7 +293,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c4df26c9b1c68ba4ba5b4dbcb3abb45f, type: 2}
   - {fileID: 11400000, guid: 6c27bb64ac9d17749abb1652bed6b558, type: 2}
   isFacingRight: 1
-  firePoint: {fileID: 1866337855}
   bulletPrefab: {fileID: 1924445341174877385, guid: ba9ad9a57ebc37e479a0121461431263, type: 3}
   wallSlidingSpeed: 1
   groundCheck: {fileID: 2003366030}
@@ -702,8 +701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCharacter: {fileID: 11400000, guid: 3eb254a71d52a224cadec93fc451af74, type: 2}
   characters:
-  - {fileID: 11400000, guid: c5cda3f08b9ac51498e7c19c1affe516, type: 2}
   - {fileID: 11400000, guid: edaa5e9fce16fd3418a24c66cb253b99, type: 2}
+  - {fileID: 11400000, guid: c5cda3f08b9ac51498e7c19c1affe516, type: 2}
   spawnPoint: {fileID: 536358902}
 --- !u!4 &190471679
 Transform:
