@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-  public PlayerScriptable currentCharacter;
-  public List<PlayerScriptable> characters;
   public Transform spawnPoint;
+  public PlayerControllerSO playerData;
 
   // Start is called before the first frame update
   void Start()
@@ -22,23 +21,28 @@ public class PlayerController : MonoBehaviour
 
   void SpawnCharacter()
   {
-    Instantiate(currentCharacter.prefab, spawnPoint.position, Quaternion.identity);
+    Instantiate(playerData.currentCharacter.prefab, spawnPoint.position, Quaternion.identity);
   }
 
-  public void SaveCharacter()
+  public void AddCharacter(PlayerScriptable newCharacter)
   {
-    // Adicionar ao script do player para poder adicionar um novo personagem a lista
+    playerData.characters.Add(newCharacter);
   }
 
   void ChangeCharacter()
   {
     // Seleciona um novo personagem
-    if(Input.GetKeyDown(KeyCode.K))
+    if (Input.GetKeyDown(KeyCode.K))
     {
       var player = GameObject.FindGameObjectWithTag("Player");
       Destroy(player);
-      currentCharacter = characters[0];
+      playerData.currentCharacter = playerData.characters[0];
       SpawnCharacter();
     }
+  }
+
+  void RemoveCharacter()
+  {
+    // Função para remover personagens
   }
 }

@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 190471678}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -699,11 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1270d6f8cb70e149af29a13966d1484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCharacter: {fileID: 11400000, guid: 3eb254a71d52a224cadec93fc451af74, type: 2}
-  characters:
-  - {fileID: 11400000, guid: edaa5e9fce16fd3418a24c66cb253b99, type: 2}
-  - {fileID: 11400000, guid: c5cda3f08b9ac51498e7c19c1affe516, type: 2}
   spawnPoint: {fileID: 536358902}
+  playerData: {fileID: 11400000, guid: 2f8bdaf577b130c40a4f05442646465c, type: 2}
 --- !u!4 &190471679
 Transform:
   m_ObjectHideFlags: 0
