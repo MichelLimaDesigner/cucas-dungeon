@@ -22,9 +22,9 @@ public class BombPotionAttack : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Player")) return;
+    Enemy enemy = other.GetComponent<Enemy>();
+    if (enemy) enemy.TakeDamage();
+    else if (other.CompareTag("Player")) return;
     else Destroy(gameObject);
-
-    // Efeitos da colisão com o cenário
   }
 }

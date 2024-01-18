@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
   public Transform spawnPoint;
   public PlayerControllerSO playerData;
+  private GameObject characterInstance;
 
   // Start is called before the first frame update
   void Start()
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
   void SpawnCharacter()
   {
-    Instantiate(playerData.currentCharacter.prefab, spawnPoint.position, Quaternion.identity);
+    characterInstance = Instantiate(playerData.currentCharacter.prefab, spawnPoint.position, Quaternion.identity);
   }
 
   public void AddCharacter(PlayerScriptable newCharacter)
@@ -41,8 +42,10 @@ public class PlayerController : MonoBehaviour
     }
   }
 
-  void RemoveCharacter()
+  public void RemoveCharacter()
   {
-    // Função para remover personagens
+    playerData.characters.Remove(playerData.currentCharacter);
+    playerData.currentCharacter = default;
+    Destroy(characterInstance);
   }
 }

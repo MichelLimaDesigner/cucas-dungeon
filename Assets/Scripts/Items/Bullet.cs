@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour
 {
   // Bullet properties
   public float speed = 3f;
-  public int damage = 1;
   public Rigidbody2D rig;
   // Start is called before the first frame update
   void Start()
@@ -32,7 +31,7 @@ public class Bullet : MonoBehaviour
 
     if (enemy != null)
     {
-      enemy.TakeDamage(damage);
+      enemy.TakeDamage();
     }
     else if (other.CompareTag("Player")) return;
     else Destroy(gameObject);

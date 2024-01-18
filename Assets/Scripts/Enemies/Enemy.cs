@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-  public int health = 3;
+  public PlayerController controller;
 
-  public void TakeDamage(int damage)
+  public void TakeDamage()
   {
-    health -= damage;
+    var hasShield = false;
 
-    if (health <= 0)
+    if (hasShield)
+    {
+      hasShield = false;
+    }
+    else
     {
       Die();
     }
@@ -19,5 +23,14 @@ public class Enemy : MonoBehaviour
   void Die()
   {
     Destroy(gameObject);
+  }
+
+  // -------------------- Trigger functions
+  private void OnCollisionEnter2D(Collision2D other)
+  {
+    if (other.gameObject.CompareTag("Player"))
+    {
+      controller.RemoveCharacter();
+    }
   }
 }

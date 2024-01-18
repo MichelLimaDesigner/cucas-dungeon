@@ -295,7 +295,6 @@ public class Player : MonoBehaviour
   // -------------------- Collision functions
   private void OnCollisionEnter2D(Collision2D others)
   {
-    // if (others.gameObject.CompareTag("Enemy")) TakeDamage();
     // Player is on ground
     if (others.gameObject.layer == 6)
     {
