@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    SpawnCharacter();
+
   }
 
   // Update is called once per frame
   void Update()
   {
-    ChangeCharacter();
+    SelectCharacter(0);
   }
 
   void SpawnCharacter()
@@ -30,16 +30,11 @@ public class PlayerController : MonoBehaviour
     playerData.characters.Add(newCharacter);
   }
 
-  void ChangeCharacter()
+  public void SelectCharacter(int characterIndex)
   {
-    // Seleciona um novo personagem
-    if (Input.GetKeyDown(KeyCode.K))
-    {
-      var player = GameObject.FindGameObjectWithTag("Player");
-      Destroy(player);
-      playerData.currentCharacter = playerData.characters[0];
-      SpawnCharacter();
-    }
+    if (characterInstance) Destroy(characterInstance);
+    playerData.currentCharacter = playerData.characters[characterIndex];
+    SpawnCharacter();
   }
 
   public void RemoveCharacter()
