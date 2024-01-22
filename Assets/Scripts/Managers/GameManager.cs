@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   public PlayerControllerSO playerData;
-  public PlayerController controller;
   public static GameManager Instance;
   public GameState State;
 
@@ -22,11 +21,10 @@ public class GameManager : MonoBehaviour
     UpdateGameState(GameState.SelectCharacter);
   }
 
-  public static void HandleSelectChar(int charIndex)
+  public static void HandleSpawnChar()
   {
     // Do something
-    Debug.Log("Aqui");
-    controller.SelectCharacter(charIndex);
+    PlayerManager.Instance.SpawnCharacter();
   }
 
   public void UpdateGameState(GameState newState)
@@ -39,12 +37,14 @@ public class GameManager : MonoBehaviour
         break;
       case GameState.Battle:
         // Do something
+        HandleSpawnChar();
         break;
       case GameState.Victory:
         // Do something
         break;
       case GameState.Lose:
         // Do something
+        Debug.Log("Perdeu mané");
         break;
       default:
         throw new ArgumentOutOfRangeException(nameof(newState), newState, null);

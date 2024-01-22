@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-  public PlayerController controller;
-
   public void TakeDamage()
   {
     var hasShield = false;
@@ -30,7 +28,7 @@ public class Enemy : MonoBehaviour
   {
     if (other.gameObject.CompareTag("Player"))
     {
-      controller.RemoveCharacter();
+      PlayerManager.Instance.RemoveCharacter();
     }
   }
 }

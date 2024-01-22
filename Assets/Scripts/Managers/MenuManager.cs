@@ -5,10 +5,9 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-  [SerializeField] private GameObject _selectCharMenu, _attackButton;
-  [SerializeField] private PlayerControllerSO _playerData;
-  [SerializeField] private TextMeshProUGUI _stateText;
-  [SerializeField] private TextMeshProUGUI _charName;
+  [SerializeField] private GameObject selectCharMenu;
+  [SerializeField] private PlayerControllerSO playerData;
+  [SerializeField] private TextMeshProUGUI charName;
   private int currentChar = 0;
 
   void Awake()
@@ -23,12 +22,13 @@ public class MenuManager : MonoBehaviour
 
   private void GameManagerOnGameStateChanged(GameState state)
   {
-    _selectCharMenu.SetActive(state == GameState.SelectCharacter);
+    selectCharMenu.SetActive(state == GameState.SelectCharacter);
+    HandleSelectedChar();
   }
 
   public void HandleNextChar()
   {
-    if (currentChar < _playerData.characters.Count - 1)
+    if (currentChar < playerData.characters.Count - 1)
     {
       currentChar += 1;
       HandleSelectedChar();
@@ -46,13 +46,13 @@ public class MenuManager : MonoBehaviour
 
   private void HandleSelectedChar()
   {
-    _charName.text = _playerData.characters[currentChar].characterName;
+    charName.text = playerData.characters[currentChar].characterName;
   }
 
   public void HandleSelectChar()
   {
-    // _playerData.currentCharacter = _playerData.characters[currentChar];
-    GameManager.HandleSelectChar(currentChar);
+    playerData.currentCharacter = playerData.characters[currentChar];
+    GameManager.Instance.UpdateGameState(GameState.Battle);
   }
 
   // Start is called before the first frame update
