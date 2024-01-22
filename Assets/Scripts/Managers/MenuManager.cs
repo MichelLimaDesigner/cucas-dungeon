@@ -46,7 +46,10 @@ public class MenuManager : MonoBehaviour
 
   private void HandleSelectedChar()
   {
-    charName.text = playerData.characters[currentChar].characterName;
+    if (currentChar >= 0 && playerData.characters.Count > 0)
+    {
+      charName.text = playerData.characters[currentChar].characterName;
+    }
   }
 
   public void HandleSelectChar()
