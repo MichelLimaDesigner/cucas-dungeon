@@ -51,9 +51,8 @@ public class GameManager : MonoBehaviour
       case GameState.Victory:
         // Do something
         break;
-      case GameState.Lose:
+      case GameState.GameOver:
         // Do something
-        Debug.Log("Perdeu mané");
         break;
       default:
         throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -68,5 +67,5 @@ public enum GameState
   Battle,
   Paused,
   Victory,
-  Lose
+  GameOver
 }

@@ -62,7 +62,7 @@ public class PlayerManager : MonoBehaviour
     }
     else
     {
-      GameManager.Instance.UpdateGameState(GameState.Lose);
+      GameManager.Instance.UpdateGameState(GameState.GameOver);
     }
   }
 }
