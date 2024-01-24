@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c5e6b007464974089f63c0791c0ce8, type: 3}
   m_Name: PlayerContorllerData
   m_EditorClassIdentifier: 
-  currentCharacter: {fileID: 11400000, guid: 3eb254a71d52a224cadec93fc451af74, type: 2}
+  currentCharacter: {fileID: 0}
   characters:
   - {fileID: 11400000, guid: 3eb254a71d52a224cadec93fc451af74, type: 2}
+  - {fileID: 11400000, guid: c5cda3f08b9ac51498e7c19c1affe516, type: 2}
+  - {fileID: 11400000, guid: edaa5e9fce16fd3418a24c66cb253b99, type: 2}

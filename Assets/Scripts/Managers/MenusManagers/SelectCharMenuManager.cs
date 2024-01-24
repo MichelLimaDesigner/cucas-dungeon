@@ -23,7 +23,11 @@ public class SelectCharMenuManager : MonoBehaviour
   private void GameManagerOnGameStateChanged(GameState state)
   {
     selectCharMenu.SetActive(state == GameState.SelectCharacter);
-    HandleSelectedChar();
+    if (state == GameState.SelectCharacter)
+    {
+      currentChar = 0;
+      HandleSelectedChar();
+    }
   }
 
   public void HandleNextChar()
@@ -56,11 +60,5 @@ public class SelectCharMenuManager : MonoBehaviour
   {
     playerData.currentCharacter = playerData.characters[currentChar];
     GameManager.Instance.UpdateGameState(GameState.Battle);
-  }
-
-  // Start is called before the first frame update
-  void Start()
-  {
-    HandleSelectedChar();
   }
 }
