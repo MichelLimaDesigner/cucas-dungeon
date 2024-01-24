@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MenuManager : MonoBehaviour
+public class SelectCharMenuManager : MonoBehaviour
 {
   [SerializeField] private GameObject selectCharMenu;
   [SerializeField] private PlayerControllerSO playerData;
@@ -62,11 +62,5 @@ public class MenuManager : MonoBehaviour
   void Start()
   {
     HandleSelectedChar();
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-
   }
 }

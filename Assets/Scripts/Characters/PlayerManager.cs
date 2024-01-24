@@ -33,7 +33,10 @@ public class PlayerManager : MonoBehaviour
 
   public void SpawnCharacter()
   {
-    characterInstance = Instantiate(playerData.currentCharacter.prefab, spawnPoint.position, Quaternion.identity);
+    if (!characterInstance)
+    {
+      characterInstance = Instantiate(playerData.currentCharacter.prefab, spawnPoint.position, Quaternion.identity);
+    }
   }
 
   public void AddCharacter(PlayerScriptable newCharacter)

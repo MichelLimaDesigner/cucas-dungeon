@@ -24,7 +24,13 @@ public class GameManager : MonoBehaviour
   public static void HandleSpawnChar()
   {
     // Do something
+    Time.timeScale = 1;
     PlayerManager.Instance.SpawnCharacter();
+  }
+
+  static void PauseGame()
+  {
+    Time.timeScale = 0;
   }
 
   public void UpdateGameState(GameState newState)
@@ -38,6 +44,9 @@ public class GameManager : MonoBehaviour
       case GameState.Battle:
         // Do something
         HandleSpawnChar();
+        break;
+      case GameState.Paused:
+        PauseGame();
         break;
       case GameState.Victory:
         // Do something
@@ -57,6 +66,7 @@ public enum GameState
 {
   SelectCharacter,
   Battle,
+  Paused,
   Victory,
   Lose
 }
