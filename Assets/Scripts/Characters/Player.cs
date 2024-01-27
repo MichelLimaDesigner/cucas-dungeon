@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
   public float speed;
   public float jumpForce;
   private float move;
-  public PlayerScriptable attributes;
+  public PlayerSO attributes;
   public List<ItemScriptable> itemsList;
 
   // -------------------- Actions controls

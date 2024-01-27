@@ -6,7 +6,7 @@ using TMPro;
 public class InGameMenuManager : MonoBehaviour
 {
   [SerializeField] private GameObject inGameMenu;
-  [SerializeField] private PlayerControllerSO playerData;
+  [SerializeField] private PlayerSO playerData;
   [SerializeField] private TextMeshProUGUI charName;
 
   void Awake()
@@ -27,6 +27,7 @@ public class InGameMenuManager : MonoBehaviour
 
   void HandleCharName()
   {
-    charName.text = playerData.currentCharacter.characterName;
+    if (playerData.transformation) charName.text = playerData.transformation.characterName;
+    else charName.text = playerData.characterName;
   }
 }

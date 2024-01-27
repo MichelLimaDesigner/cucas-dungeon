@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-  public PlayerControllerSO playerData;
+  public PlayerSO playerData;
   public static GameManager Instance;
   public GameState State;
 
@@ -18,14 +18,14 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
-    UpdateGameState(GameState.SelectCharacter);
+    UpdateGameState(GameState.Battle);
   }
 
   public static void HandleSpawnChar()
   {
     // Do something
     Time.timeScale = 1;
-    PlayerManager.Instance.SpawnCharacter();
+    // PlayerManager.Instance.SpawnCharacter();
   }
 
   static void PauseGame()
@@ -38,9 +38,6 @@ public class GameManager : MonoBehaviour
     State = newState;
     switch (newState)
     {
-      case GameState.SelectCharacter:
-        // Do something
-        break;
       case GameState.Battle:
         // Do something
         HandleSpawnChar();
@@ -63,7 +60,6 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
-  SelectCharacter,
   Battle,
   Paused,
   Victory,

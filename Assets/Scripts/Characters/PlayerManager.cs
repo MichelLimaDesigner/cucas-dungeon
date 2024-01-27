@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
   [SerializeField] private Transform spawnPoint;
-  [SerializeField] private PlayerControllerSO playerData;
+  [SerializeField] private PlayerSO playerData;
   [SerializeField] static private GameObject characterInstance;
   public static PlayerManager Instance;
 
@@ -28,37 +28,33 @@ public class PlayerManager : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-
+    Instantiate(playerData.prefab, spawnPoint.position, Quaternion.identity);
   }
 
-  public void SpawnCharacter()
+  public void SpawnTransformation()
   {
     if (!characterInstance)
     {
-      characterInstance = Instantiate(playerData.currentCharacter.prefab, spawnPoint.position, Quaternion.identity);
+      characterInstance = Instantiate(playerData.transformation.prefab, spawnPoint.position, Quaternion.identity);
     }
   }
 
-  public void AddCharacter(PlayerScriptable newCharacter)
+  public void TransformPlayer(PlayerTransformationSO transformation)
   {
-    playerData.characters.Add(newCharacter);
+    playerData.transformation = transformation;
+    SpawnTransformation();
   }
 
-  public void SelectCharacter(int characterIndex)
+  public void LoseTransformation()
   {
-    if (characterInstance) Destroy(characterInstance);
-    playerData.currentCharacter = playerData.characters[characterIndex];
-    SpawnCharacter();
-  }
-
-  public void RemoveCharacter()
-  {
-    playerData.characters.Remove(playerData.currentCharacter);
-    playerData.currentCharacter = default;
-    Destroy(characterInstance);
-    if (playerData.characters.Count > 0)
+    if (playerData.hasShield)
     {
-      GameManager.Instance.UpdateGameState(GameState.SelectCharacter);
+      playerData.hasShield = false;
+    }
+    else if (!playerData.hasShield && playerData.transformation)
+    {
+      playerData.transformation = default;
+      Destroy(characterInstance);
     }
     else
     {

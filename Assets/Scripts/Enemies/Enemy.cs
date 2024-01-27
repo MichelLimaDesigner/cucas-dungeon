@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
   {
     if (other.gameObject.CompareTag("Player"))
     {
-      PlayerManager.Instance.RemoveCharacter();
+      PlayerManager.Instance.LoseTransformation();
     }
   }
 }
