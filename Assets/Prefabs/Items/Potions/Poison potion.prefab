@@ -133,3 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5a64a6d7ece5544b84937bbc23ca74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
+  isScaling: 0
+  transformation: {fileID: 11400000, guid: edaa5e9fce16fd3418a24c66cb253b99, type: 2}

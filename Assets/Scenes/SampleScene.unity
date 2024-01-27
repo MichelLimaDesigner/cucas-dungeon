@@ -590,7 +590,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 676571273}
-  - {fileID: 164308302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129463787
@@ -861,11 +860,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161708025}
   m_CullTransparentMesh: 1
---- !u!4 &164308302 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-  m_PrefabInstance: {fileID: 517467609}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &174680292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,6 +1333,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080d8a208236fc947a0b8efc91c47cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &250590023
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2254384668307316375, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_Name
+      value: Bomb potion - item
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.505927
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.59307575
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515033998623668522, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
 --- !u!1 &261047351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2195,63 +2246,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.4}
   m_EdgeRadius: 0
---- !u!1001 &517467609
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 125093261}
-    m_Modifications:
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5656165
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4269854795488734983, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6043048747408770781, guid: b44d71db5b003b746861795a0046a889, type: 3}
-      propertyPath: m_Name
-      value: Poison potion (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b44d71db5b003b746861795a0046a889, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5065,6 +5059,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5a64a6d7ece5544b84937bbc23ca74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
+  isScaling: 0
+  transformation: {fileID: 0}
 --- !u!1 &1486262044
 GameObject:
   m_ObjectHideFlags: 0
@@ -5897,6 +5894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5a64a6d7ece5544b84937bbc23ca74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
+  isScaling: 0
+  transformation: {fileID: 0}
 --- !u!1 &1693279186
 GameObject:
   m_ObjectHideFlags: 0
@@ -7536,3 +7536,4 @@ SceneRoots:
   - {fileID: 1576832549}
   - {fileID: 736712132}
   - {fileID: 125093261}
+  - {fileID: 250590023}

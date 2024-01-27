@@ -263,35 +263,6 @@ public class Player : MonoBehaviour
     StartCoroutine(Respawn());
   }
 
-  // -------------------- Invetory functions
-  // public ItemScriptable FindItemByName(string itemName)
-  // {
-  //   ItemScriptable itemFound = itemsList.Find(item => item.itemName == itemName);
-  //   return itemFound;
-  // }
-
-  // public void AddItemToInventory(string itemName)
-  // {
-  //   ItemScriptable itemFound = FindItemByName(itemName);
-
-  //   if (itemFound != null)
-  //   {
-  //     attributes.itemsInventory.Add(itemFound);
-
-  //     Debug.Log("Item adicionado ao inventário: " + itemFound.itemName);
-  //   }
-  //   else
-  //   {
-  //     Debug.Log("Item não encontrado para adicionar ao inventário.");
-  //   }
-  // }
-
-  // private void AddNewPotion()
-  // {
-  //   Debug.Log("New potion added");
-  // }
-
-
   // -------------------- Collision functions
   private void OnCollisionEnter2D(Collision2D others)
   {

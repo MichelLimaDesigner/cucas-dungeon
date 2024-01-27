@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CollectibleItem : MonoBehaviour
 {
-  private Vector3 originalScale;
-  private bool isScaling = false;
+  [SerializeField] private Vector3 originalScale;
+  [SerializeField] private bool isScaling = false;
+  [SerializeField] private PlayerTransformationSO transformation;
 
   // Start is called before the first frame update
   void Start()
@@ -19,6 +20,7 @@ public class CollectibleItem : MonoBehaviour
     if (other.CompareTag("Player") && !isScaling)
     {
       StartCoroutine(ScaleOverTime(originalScale, new Vector3(0.1f, 0.1f, 0.1f), 0.5f));
+      if (transformation) PlayerManager.Instance.TransformPlayer(transformation);
     }
   }
 
