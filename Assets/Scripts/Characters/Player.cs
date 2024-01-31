@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
   void Move()
   {
     Vector3 movement = new Vector3(move, 0f, 0f);
-    transform.position += movement * Time.deltaTime * speed;
+    transform.position += movement * Time.deltaTime * attributes.speed;
   }
 
   void Flip()
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
     {
       if (isGrounded)
       {
-        velocity.y = jumpForce;
+        velocity.y = attributes.jumpForce;
         rig.velocity = velocity;
       }
       else if (isSliding)

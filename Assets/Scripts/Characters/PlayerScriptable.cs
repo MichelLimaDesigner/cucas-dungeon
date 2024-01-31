@@ -10,6 +10,13 @@ public class PlayerTransformationSO : ScriptableObject
   public Texture2D avatar;
   public Texture2D card;
 
+  // -------------------- Transformation attributes
+  public float speed;
+  public float jumpForce;
+  public bool canWalkInWall;
+  public bool canFly;
+  public bool canDoubleJump;
+
   // -------------------- Others
   public GameObject prefab;
   public PotionsScriptable potion;

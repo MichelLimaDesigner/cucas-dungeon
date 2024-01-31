@@ -6,7 +6,7 @@ public class CollectibleItem : MonoBehaviour
 {
   [SerializeField] private Vector3 originalScale;
   [SerializeField] private bool isScaling = false;
-  [SerializeField] private PlayerTransformationSO transformation;
+  [SerializeField] private PlayerSO transformation;
 
   // Start is called before the first frame update
   void Start()

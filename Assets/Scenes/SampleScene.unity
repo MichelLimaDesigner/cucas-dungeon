@@ -1097,6 +1097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 536358902}
   playerData: {fileID: 11400000, guid: 2f8bdaf577b130c40a4f05442646465c, type: 2}
+  isIntangible: 0
 --- !u!4 &190471679
 Transform:
   m_ObjectHideFlags: 0
@@ -1385,6 +1386,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7714653375482101084, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+      propertyPath: transformation
+      value: 
+      objectReference: {fileID: 11400000, guid: 53d87085178ec524d8da6b3030d4abf1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

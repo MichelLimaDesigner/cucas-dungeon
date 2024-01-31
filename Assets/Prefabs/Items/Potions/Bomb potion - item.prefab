@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7714653375482101084}
   m_Layer: 0
   m_Name: Bomb potion - item
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,4 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScale: {x: 0, y: 0, z: 0}
   isScaling: 0
-  transformation: {fileID: 11400000, guid: c5cda3f08b9ac51498e7c19c1affe516, type: 2}
+  transformation: {fileID: 11400000, guid: 53d87085178ec524d8da6b3030d4abf1, type: 2}

@@ -9,13 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc6cba8d67236a2479ede0d6f07f59d5, type: 3}
-  m_Name: JoaquimData
+  m_Script: {fileID: 11500000, guid: c8c5e6b007464974089f63c0791c0ce8, type: 3}
+  m_Name: AranhaData
   m_EditorClassIdentifier: 
-  characterName: Joaquim
+  transformation: {fileID: 0}
+  characterName: Chico Aranha
   avatar: {fileID: 0}
   card: {fileID: 0}
+  speed: 6
+  jumpForce: 10
+  canWalkInWall: 1
+  canFly: 0
+  canDoubleJump: 0
   prefab: {fileID: 6804479279739321955, guid: 5afd35b6b19d5dc4db73d501271913bb, type: 3}
   potion: {fileID: 0}
-  potionsInventory: []
   hasShield: 0

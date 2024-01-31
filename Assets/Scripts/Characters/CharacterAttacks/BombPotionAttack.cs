@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombPotionAttack : MonoBehaviour
 {
-  public float speed = 4f;
+  public float speed = 0f;
   public int damage = 1;
 
   // Start is called before the first frame update

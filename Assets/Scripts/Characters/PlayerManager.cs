@@ -55,7 +55,7 @@ public class PlayerManager : MonoBehaviour
     Destroy(characterInstance);
   }
 
-  public void TransformPlayer(PlayerTransformationSO transformation)
+  public void TransformPlayer(PlayerSO transformation)
   {
     playerData.transformation = transformation;
     SpawnTransformation();

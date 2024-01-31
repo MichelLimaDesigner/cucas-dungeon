@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c5e6b007464974089f63c0791c0ce8, type: 3}
   m_Name: PlayerContorllerData
   m_EditorClassIdentifier: 
-  transformation: {fileID: 0}
+  transformation: {fileID: 11400000, guid: 87b12a393666a4749a23be4672af6000, type: 2}
   characterName: Chico
   avatar: {fileID: 0}
   card: {fileID: 0}
+  speed: 5
+  jumpForce: 10
+  canWalkInWall: 0
+  canFly: 0
+  canDoubleJump: 0
   prefab: {fileID: 8548190480868637026, guid: 3d98078acbcc79744aa10ff46671ed14, type: 3}
   potion: {fileID: 0}
   hasShield: 0
