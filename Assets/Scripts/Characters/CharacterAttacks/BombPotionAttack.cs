@@ -25,6 +25,6 @@ public class BombPotionAttack : MonoBehaviour
     Enemy enemy = other.GetComponent<Enemy>();
     if (enemy) enemy.TakeDamage();
     else if (other.CompareTag("Player")) return;
-    else Destroy(gameObject);
+    // else Destroy(gameObject);
   }
 }

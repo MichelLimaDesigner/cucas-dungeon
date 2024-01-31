@@ -10,6 +10,7 @@ TagManager:
   - Death
   - Portal
   - Attack
+  - AttackChico
   layers:
   - Default
   - TransparentFX
