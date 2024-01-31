@@ -34,6 +34,6 @@ public class Bullet : MonoBehaviour
       enemy.TakeDamage();
     }
     else if (other.CompareTag("Player")) return;
-    else Destroy(gameObject);
+    // else Destroy(gameObject);
   }
 }

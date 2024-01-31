@@ -6,28 +6,34 @@ public class PortalController : MonoBehaviour
 {
   public Transform portalDestination;
   public bool isHeightPortal;
-  private Player playerScript;
-  GameObject player;
-
+  public List<GameObject> objectsToTeleport = new List<GameObject>();
+  public List<string> allowedTags = new List<string>();
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Player"))
-      if(GameObject.FindGameObjectWithTag("Player"))
+    Debug.Log(other.gameObject);
+    // Verifica se o objeto que colidiu com o portal está na lista de objetos permitidos
+    if (allowedTags.Contains(other.tag))
+    {
+      TeleportObject(other.gameObject);
+    }
+  }
+
+  private void TeleportObject(GameObject objToTeleport)
+  {
+
+    Player playerScript = objToTeleport.GetComponent<Player>();
+
+    if (Vector2.Distance(objToTeleport.transform.position, transform.position) > 0.3f)
+    {
+      if (isHeightPortal) objToTeleport.transform.position = portalDestination.position;
+      else
       {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = player.GetComponent<Player>();
-      {
-        if (Vector2.Distance(player.transform.position, transform.position) > 0.3f)
-        {
-          if (isHeightPortal) player.transform.position = portalDestination.transform.position;
-          else
-          {
-            var position = portalDestination.transform.position;
-            if (playerScript.isFacingRight) position.x += 1f;
-            else position.x -= 1f;
-            player.transform.position = position;
-          }
-        }
+        Debug.Log("aquiiiiii");
+        Debug.Log(objToTeleport);
+        var position = portalDestination.position;
+        // if (playerScript.isFacingRight) position.x += 1f;
+        // else position.x -= 1f;
+        objToTeleport.transform.position = position;
       }
     }
   }
