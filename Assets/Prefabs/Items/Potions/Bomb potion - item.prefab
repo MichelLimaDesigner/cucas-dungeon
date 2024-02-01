@@ -135,4 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScale: {x: 0, y: 0, z: 0}
   isScaling: 0
-  transformation: {fileID: 11400000, guid: 53d87085178ec524d8da6b3030d4abf1, type: 2}
+  transformation: {fileID: 11400000, guid: fca79c45f82083f4f8459ea43f7ee36a, type: 2}
