@@ -16,6 +16,7 @@ public class PlayerSO : ScriptableObject
   // -------------------- Transformation attributes
   public float speed;
   public float jumpForce;
+  public float flightForce;
   public bool canWalkInWall;
   public bool canFly;
   public bool canDoubleJump;

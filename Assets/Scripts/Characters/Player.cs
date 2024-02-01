@@ -129,6 +129,12 @@ public class Player : MonoBehaviour
         wallJumping = true;
         Invoke("StopWallJump", wallJumpDuration);
       }
+      else if (!isGrounded && attributes.canFly)
+      {
+        // Se estiver no ar, aplica uma força para simular o voo.
+        rig.velocity = new Vector2(rig.velocity.x, jumpForce / 2);
+        rig.AddForce(Vector2.up * attributes.flightForce, ForceMode2D.Impulse);
+      }
     }
 
     if (jump && rig.velocity.y > 0)

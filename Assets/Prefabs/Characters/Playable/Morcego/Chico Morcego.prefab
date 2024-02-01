@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 10
+  flightForce: 0.1
   attributes: {fileID: 11400000, guid: 87b12a393666a4749a23be4672af6000, type: 2}
   itemsList:
   - {fileID: 11400000, guid: c4df26c9b1c68ba4ba5b4dbcb3abb45f, type: 2}
