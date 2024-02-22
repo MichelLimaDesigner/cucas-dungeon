@@ -317,8 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e6a31dd5186b64fbc2659427bd2ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 10
   attributes: {fileID: 0}
   itemsList:
   - {fileID: 11400000, guid: c4df26c9b1c68ba4ba5b4dbcb3abb45f, type: 2}

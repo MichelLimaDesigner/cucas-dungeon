@@ -23,12 +23,21 @@ public class Enemy : MonoBehaviour
     Destroy(gameObject);
   }
 
-  // -------------------- Trigger functions
+  // -------------------- Collision functions
   private void OnCollisionEnter2D(Collision2D other)
   {
     if (other.gameObject.CompareTag("Player"))
     {
       if (!PlayerManager.Instance.isIntangible) PlayerManager.Instance.TakeDamage();
+    }
+  }
+
+  // -------------------- Trigger functions
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.CompareTag("Attack"))
+    {
+      TakeDamage();
     }
   }
 }

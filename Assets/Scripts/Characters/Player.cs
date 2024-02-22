@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+  public static Player Instance;
   // -------------------- Player attributes
   [Header("Player Attributes")]
   private float move;
@@ -45,6 +45,13 @@ public class Player : MonoBehaviour
   private Vector2 dashingDir;
   private bool isDashing = false;
   private bool canDash = true;
+
+
+  void Awake()
+  {
+    Instance = this;
+  }
+
 
   // -------------------- Start is called before the first frame update
   void Start()
