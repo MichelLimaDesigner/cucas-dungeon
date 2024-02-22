@@ -17,8 +17,8 @@ MonoBehaviour:
   avatar: {fileID: 0}
   card: {fileID: 0}
   speed: 5
-  jumpForce: 10
-  flightForce: 0
+  jumpForce: 8
+  flightForce: 1.2
   canWalkInWall: 0
   canFly: 1
   canDoubleJump: 0

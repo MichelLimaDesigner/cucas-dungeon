@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: CururuData
   m_EditorClassIdentifier: 
   transformation: {fileID: 0}
-  characterName: Chico Sapo
+  characterName: Chico Cururu
   avatar: {fileID: 0}
   card: {fileID: 0}
   speed: 5
-  jumpForce: 15
+  jumpForce: 12
   flightForce: 0
   canWalkInWall: 0
   canFly: 0
   canDoubleJump: 0
-  prefab: {fileID: 0}
+  prefab: {fileID: 1098475857834854451, guid: 7e1fbdf3da1da384faa677a1d0e465ab, type: 3}
   potion: {fileID: 0}
   hasShield: 0
