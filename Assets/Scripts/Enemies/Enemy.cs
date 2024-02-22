@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
   {
     if (other.gameObject.CompareTag("Player"))
     {
-      if (!PlayerManager.Instance.isIntangible) PlayerManager.Instance.LoseTransformation();
+      if (!PlayerManager.Instance.isIntangible) PlayerManager.Instance.TakeDamage();
     }
   }
 }

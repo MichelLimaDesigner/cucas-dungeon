@@ -8,9 +8,11 @@ public class InGameMenuManager : MonoBehaviour
   [SerializeField] private GameObject inGameMenu;
   [SerializeField] private PlayerSO playerData;
   [SerializeField] private TextMeshProUGUI charName;
+  public static InGameMenuManager Instance;
 
   void Awake()
   {
+    Instance = this;
     GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
   }
 
@@ -25,7 +27,7 @@ public class InGameMenuManager : MonoBehaviour
     if (state == GameState.Battle) HandleCharName();
   }
 
-  void HandleCharName()
+  public void HandleCharName()
   {
     if (playerData.transformation) charName.text = playerData.transformation.characterName;
     else charName.text = playerData.characterName;

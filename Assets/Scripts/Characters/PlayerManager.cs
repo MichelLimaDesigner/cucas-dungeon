@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour
     Transform transf = characterInstance.transform;
     DestroyChar();
     characterInstance = Instantiate(playerData.prefab, transf.position, Quaternion.identity);
+    InGameMenuManager.Instance.HandleCharName();
   }
 
   // Function to spawn any Chico's transformation
@@ -47,6 +48,7 @@ public class PlayerManager : MonoBehaviour
     Transform transf = characterInstance.transform;
     DestroyChar();
     characterInstance = Instantiate(playerData.transformation.prefab, transf.position, Quaternion.identity);
+    InGameMenuManager.Instance.HandleCharName();
   }
 
   // Function to destroy player instance in scene
@@ -72,7 +74,9 @@ public class PlayerManager : MonoBehaviour
     isIntangible = false;
   }
 
-  public void LoseTransformation()
+
+  // Funtion excute when Player get a hit
+  public void TakeDamage()
   {
     if (playerData.hasShield)
     {

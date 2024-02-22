@@ -7,14 +7,11 @@ public class Player : MonoBehaviour
 
   // -------------------- Player attributes
   [Header("Player Attributes")]
-  public float speed;
-  public float jumpForce;
   private float move;
   public PlayerSO attributes;
   public List<ItemScriptable> itemsList;
 
   // -------------------- Actions controls
-  private float direction;
   public bool isFacingRight = true;
   private bool jump;
   private bool active = true;
@@ -132,7 +129,7 @@ public class Player : MonoBehaviour
       else if (!isGrounded && attributes.canFly)
       {
         // Se estiver no ar, aplica uma força para simular o voo.
-        rig.velocity = new Vector2(rig.velocity.x, jumpForce / 2);
+        rig.velocity = new Vector2(rig.velocity.x, attributes.jumpForce / 2);
         rig.AddForce(Vector2.up * attributes.flightForce, ForceMode2D.Impulse);
       }
     }
@@ -256,7 +253,7 @@ public class Player : MonoBehaviour
   private void DieMiniJump()
   {
     Vector2 velocity = rig.velocity;
-    velocity.y = jumpForce / 2;
+    velocity.y = attributes.jumpForce / 2;
     velocity.x = 0;
     rig.velocity = velocity;
   }
