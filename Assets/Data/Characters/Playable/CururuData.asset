@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c5e6b007464974089f63c0791c0ce8, type: 3}
+  m_Name: CururuData
+  m_EditorClassIdentifier: 
+  transformation: {fileID: 0}
+  characterName: Chico Sapo
+  avatar: {fileID: 0}
+  card: {fileID: 0}
+  speed: 5
+  jumpForce: 15
+  flightForce: 0
+  canWalkInWall: 0
+  canFly: 0
+  canDoubleJump: 0
+  prefab: {fileID: 0}
+  potion: {fileID: 0}
+  hasShield: 0
