@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1783615750359931954}
   - component: {fileID: 3000357855113738684}
   - component: {fileID: 337479397607519314}
+  - component: {fileID: 1150808098751185759}
   m_Layer: 0
   m_Name: Chico Cururu
   m_TagString: Player
@@ -36,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 6827952252441016267}
   - {fileID: 7716682070192793293}
+  - {fileID: 8879751338658574301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2177191248187845442
@@ -287,8 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e6a31dd5186b64fbc2659427bd2ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 10
   attributes: {fileID: 11400000, guid: 5eff5774d226bf14a92bc1c10da70ea7, type: 2}
   itemsList:
   - {fileID: 11400000, guid: c4df26c9b1c68ba4ba5b4dbcb3abb45f, type: 2}
@@ -306,6 +306,20 @@ MonoBehaviour:
   dashingVelocity: 7
   dashingTime: 0.1
   trailRenderer: {fileID: 0}
+--- !u!114 &1150808098751185759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098475857834854451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b639255498b52047b1180c8e4c9ed73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7171297512769560668, guid: a7354c74b7ddd2f4fa59a423d1a6ee23, type: 3}
+  firePoint: {fileID: 8879751338658574301}
 --- !u!1 &8049526362872081223
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +397,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.1}
   m_EdgeRadius: 0
+--- !u!1 &8459318937453528428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8879751338658574301}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8879751338658574301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459318937453528428}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6199724425210498040}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8535249026826737582
 GameObject:
   m_ObjectHideFlags: 0
