@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+  public static Enemy Instance;
+
+  void Awake()
+  {
+    Instance = this;
+  }
+
   public void TakeDamage()
   {
     var hasShield = false;
