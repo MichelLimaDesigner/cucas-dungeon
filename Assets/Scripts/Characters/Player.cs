@@ -288,5 +288,9 @@ public class Player : MonoBehaviour
       Debug.Log(other.gameObject.name);
       // AddItemToInventory(other.gameObject.name);
     }
+    else if (other.CompareTag("EnemyHeadHit"))
+    {
+      DieMiniJump();
+    }
   }
 }
