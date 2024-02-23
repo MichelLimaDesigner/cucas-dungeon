@@ -33,10 +33,7 @@ public class Enemy : MonoBehaviour
   // -------------------- Collision functions
   private void OnCollisionEnter2D(Collision2D other)
   {
-    if (other.gameObject.CompareTag("Player"))
-    {
-      if (!PlayerManager.Instance.isIntangible) PlayerManager.Instance.TakeDamage();
-    }
+    // Collision Functions
   }
 
   // -------------------- Trigger functions

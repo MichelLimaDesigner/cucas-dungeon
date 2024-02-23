@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+  public static Player Instance;
   // -------------------- Player attributes
   [Header("Player Attributes")]
   private float move;
@@ -44,6 +45,11 @@ public class Player : MonoBehaviour
   private Vector2 dashingDir;
   private bool isDashing = false;
   private bool canDash = true;
+
+  void Awake()
+  {
+    Instance = this;
+  }
 
   // -------------------- Start is called before the first frame update
   void Start()
@@ -238,7 +244,7 @@ public class Player : MonoBehaviour
     transform.position = respawnPoint;
     active = true;
     playerCollider.enabled = true;
-    DieMiniJump();
+    MiniJump();
   }
 
   public void TakeDamage()
@@ -249,7 +255,7 @@ public class Player : MonoBehaviour
     }
   }
 
-  private void DieMiniJump()
+  public void MiniJump()
   {
     Vector2 velocity = rig.velocity;
     velocity.y = attributes.jumpForce / 2;
@@ -261,7 +267,7 @@ public class Player : MonoBehaviour
   {
     active = false;
     playerCollider.enabled = false;
-    DieMiniJump();
+    MiniJump();
     StartCoroutine(Respawn());
   }
 
@@ -272,6 +278,10 @@ public class Player : MonoBehaviour
     if (others.gameObject.layer == 6)
     {
       if (!isDashing) canDash = true;
+    }
+    if (others.gameObject.CompareTag("Enemy"))
+    {
+      if (!PlayerManager.Instance.isIntangible) PlayerManager.Instance.TakeDamage();
     }
   }
 
@@ -290,7 +300,7 @@ public class Player : MonoBehaviour
     }
     else if (other.CompareTag("EnemyHeadHit"))
     {
-      DieMiniJump();
+      MiniJump();
     }
   }
 }

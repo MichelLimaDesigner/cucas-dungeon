@@ -7,10 +7,10 @@ public class EnemyHeadHit : MonoBehaviour
   // -------------------- Trigger functions
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Player"))
+    if (other.CompareTag("Enemy"))
     {
-      GameObject parent = gameObject.transform.parent.gameObject;
-      parent.GetComponent<Enemy>().TakeDamage();
+      other.GetComponent<Enemy>().TakeDamage();
+      Player.Instance.MiniJump();
     }
   }
 }
