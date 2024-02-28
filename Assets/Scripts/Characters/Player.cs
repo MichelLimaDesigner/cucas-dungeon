@@ -9,13 +9,11 @@ public class Player : MonoBehaviour
   [Header("Player Attributes")]
   private float move;
   public PlayerSO attributes;
-  public List<ItemScriptable> itemsList;
 
   // -------------------- Actions controls
   public bool isFacingRight = true;
   private bool jump;
   private bool active = true;
-  private Vector2 respawnPoint;
 
   // -------------------- Components and Objects
   private Rigidbody2D rig;
@@ -57,7 +55,6 @@ public class Player : MonoBehaviour
     rig = GetComponent<Rigidbody2D>();
     playerCollider = GetComponent<Collider2D>();
     trailRenderer = GetComponent<TrailRenderer>();
-    SetRespawnPoint(transform.position);
     chicoAttack = GetComponent<ChicoAttack>();
   }
 
@@ -232,11 +229,7 @@ public class Player : MonoBehaviour
     }
   }
 
-  // -------------------- Die and Respawn
-  public void SetRespawnPoint(Vector2 position)
-  {
-    respawnPoint = position;
-  }
+  // -------------------- Die
 
   public void MiniJump()
   {
