@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3822225634361285867}
   - component: {fileID: 3990894775550636756}
   - component: {fileID: 5021200142798343618}
-  - component: {fileID: 1915886145714943114}
+  - component: {fileID: 5970677299087468474}
   m_Layer: 0
   m_Name: Teste
   m_TagString: Enemy
@@ -161,7 +161,7 @@ MonoBehaviour:
   followDistance: 20
   enemy: {fileID: 6804479279739321955}
   maxHits: 5
---- !u!50 &1915886145714943114
+--- !u!50 &5970677299087468474
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -187,4 +187,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0

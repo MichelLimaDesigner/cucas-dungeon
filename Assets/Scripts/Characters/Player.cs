@@ -285,5 +285,13 @@ public class Player : MonoBehaviour
     {
       MiniJump();
     }
+    else if (other.CompareTag("Damage"))
+    {
+      if (!PlayerManager.Instance.isIntangible)
+      {
+        PlayerManager.Instance.TakeDamage();
+        MiniJump();
+      }
+    }
   }
 }
