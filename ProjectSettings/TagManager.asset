@@ -12,6 +12,7 @@ TagManager:
   - Attack
   - AttackChico
   - EnemyHeadHit
+  - VirtualCam
   layers:
   - Default
   - TransparentFX

@@ -2,18 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
   public PlayerSO playerData;
   public static GameManager Instance;
   public GameState State;
+  private CinemachineVirtualCamera vcam;
 
   public static event Action<GameState> OnGameStateChanged;
 
   private void Awake()
   {
     Instance = this;
+    vcam = GameObject.FindGameObjectsWithTag("VirtualCam")[0].GetComponent<CinemachineVirtualCamera>();
   }
 
   void Start()
@@ -21,11 +24,16 @@ public class GameManager : MonoBehaviour
     UpdateGameState(GameState.Battle);
   }
 
+  public void HandleCameraPlayer(GameObject player)
+  {
+    Debug.Log("Cheguei aqui");
+    Debug.Log(player);
+    if (player) vcam.Follow = player.transform;
+  }
+
   public static void HandleSpawnChar()
   {
-    // Do something
     Time.timeScale = 1;
-    // PlayerManager.Instance.SpawnCharacter();
   }
 
   static void PauseGame()

@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
   {
     // Instatiate a Chico's prefab on start scene
     characterInstance = Instantiate(playerData.prefab, spawnPoint.position, Quaternion.identity);
+    if (characterInstance != null) GameManager.Instance?.HandleCameraPlayer(characterInstance);
   }
 
   // Function to spawn Chico's prefab
@@ -40,6 +41,7 @@ public class PlayerManager : MonoBehaviour
     DestroyChar();
     characterInstance = Instantiate(playerData.prefab, transf.position, Quaternion.identity);
     InGameMenuManager.Instance.HandleCharName();
+    GameManager.Instance.HandleCameraPlayer(characterInstance);
   }
 
   // Function to spawn any Chico's transformation
@@ -49,12 +51,13 @@ public class PlayerManager : MonoBehaviour
     DestroyChar();
     characterInstance = Instantiate(playerData.transformation.prefab, transf.position, Quaternion.identity);
     InGameMenuManager.Instance.HandleCharName();
+    GameManager.Instance.HandleCameraPlayer(characterInstance);
   }
 
   // Function to destroy player instance in scene
   private void DestroyChar()
   {
-    Destroy(characterInstance);
+    if (characterInstance) Destroy(characterInstance);
   }
 
   public void TransformPlayer(PlayerSO transformation)
