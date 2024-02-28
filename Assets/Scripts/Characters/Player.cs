@@ -238,37 +238,12 @@ public class Player : MonoBehaviour
     respawnPoint = position;
   }
 
-  private IEnumerator Respawn()
-  {
-    yield return new WaitForSeconds(1f);
-    transform.position = respawnPoint;
-    active = true;
-    playerCollider.enabled = true;
-    MiniJump();
-  }
-
-  public void TakeDamage()
-  {
-    if (!attributes.hasShield)
-    {
-      Die();
-    }
-  }
-
   public void MiniJump()
   {
     Vector2 velocity = rig.velocity;
     velocity.y = attributes.jumpForce / 2;
     velocity.x = 0;
     rig.velocity = velocity;
-  }
-
-  public void Die()
-  {
-    active = false;
-    playerCollider.enabled = false;
-    MiniJump();
-    StartCoroutine(Respawn());
   }
 
   // -------------------- Collision functions
@@ -283,11 +258,19 @@ public class Player : MonoBehaviour
     {
       if (!PlayerManager.Instance.isIntangible) PlayerManager.Instance.TakeDamage();
     }
+    if (others.gameObject.CompareTag("Damage"))
+    {
+      if (!PlayerManager.Instance.isIntangible)
+      {
+        PlayerManager.Instance.TakeDamage();
+        MiniJump();
+      }
+    }
   }
 
   private void OnCollisionExit2D(Collision2D others)
   {
-    // Collision exit functions
+    // Do something
   }
 
   // -------------------- Trigger functions
