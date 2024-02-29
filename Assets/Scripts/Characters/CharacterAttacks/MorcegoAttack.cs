@@ -6,7 +6,12 @@ public class MorcegoAttack : MonoBehaviour
 {
   private bool canShoot = true;
   public GameObject bulletPrefab;
+  AudioManager audioManager;
 
+  void Awake()
+  {
+    audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+  }
 
   // Update is called once per frame
   void Update()
@@ -20,6 +25,7 @@ public class MorcegoAttack : MonoBehaviour
     {
       canShoot = false;
       bulletPrefab.SetActive(true);
+      audioManager.PlaySFX(audioManager.morcegoSFX);
       StartCoroutine(AttackDuration(1));
       StartCoroutine(SetCanShoot(3));
     }

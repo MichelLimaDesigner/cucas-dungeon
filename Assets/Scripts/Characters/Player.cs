@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
   public GameObject bulletPrefab;
   public Animator animator;
   public GameObject transformationAnim;
+  AudioManager audioManager;
 
   // -------------------- Ground & wall system
   [Header("Ground and wall system")]
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
   void Awake()
   {
     Instance = this;
+    audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
   }
 
   // -------------------- Start is called before the first frame update
@@ -93,6 +95,7 @@ public class Player : MonoBehaviour
     Vector3 movement = new Vector3(move, 0f, 0f);
     transform.position += movement * Time.deltaTime * attributes.speed;
     animator.SetFloat("Speed", Mathf.Abs(move)); // Set run animation
+    // audioManager.PlaySFX(audioManager.walkSFX);
   }
 
   void Flip()

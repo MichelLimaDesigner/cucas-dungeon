@@ -9,11 +9,13 @@ public class PlayerManager : MonoBehaviour
   [SerializeField] static private GameObject characterInstance;
   [SerializeField] public bool isIntangible = false;
   public static PlayerManager Instance;
+  AudioManager audioManager;
 
   void Awake()
   {
     Instance = this;
     GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+    audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
   }
 
   void OnDestroy()
@@ -40,6 +42,7 @@ public class PlayerManager : MonoBehaviour
     Transform transf = characterInstance.transform;
     GameObject character = playerData.prefab;
     Player.Instance.transformationAnim.SetActive(true); // Transformation animation
+    audioManager.PlaySFX(audioManager.transformationSFX);
     StartCoroutine(InstantiateChar(character, transf));
   }
 
@@ -49,6 +52,7 @@ public class PlayerManager : MonoBehaviour
     Transform transf = characterInstance.transform;
     GameObject character = playerData.transformation.prefab;
     Player.Instance.transformationAnim.gameObject.SetActive(true); // Transformation animation
+    audioManager.PlaySFX(audioManager.transformationSFX);
     StartCoroutine(InstantiateChar(character, transf));
   }
 

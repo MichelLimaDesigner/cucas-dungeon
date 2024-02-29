@@ -15,6 +15,7 @@ TagManager:
   - VirtualCam
   - Damage
   - LevelSwitch
+  - Audio
   layers:
   - Default
   - TransparentFX
