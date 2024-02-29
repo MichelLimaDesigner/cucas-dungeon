@@ -524,6 +524,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3026604815608706546, guid: b09125fed1b02dc429715b77da6414b4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026604815608706546, guid: b09125fed1b02dc429715b77da6414b4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1864119739
+      objectReference: {fileID: 0}
     - target: {fileID: 8137563189056272832, guid: b09125fed1b02dc429715b77da6414b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
