@@ -190,6 +190,8 @@ MonoBehaviour:
   attributes: {fileID: 0}
   isFacingRight: 1
   bulletPrefab: {fileID: 1924445341174877385, guid: ba9ad9a57ebc37e479a0121461431263, type: 3}
+  animator: {fileID: 0}
+  transformationAnim: {fileID: 0}
   wallSlidingSpeed: 1
   groundCheck: {fileID: 2003366030}
   wallCheck: {fileID: 512946915}
@@ -3149,6 +3151,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6093495543207933029, guid: 1153e1defeb6f55429ec48f8fd753d94, type: 3}
+      propertyPath: potionsPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093495543207933029, guid: 1153e1defeb6f55429ec48f8fd753d94, type: 3}
+      propertyPath: potionsPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7126758238556694353, guid: 0a6fb3c4a1c391641a2018abe9eca3eb, type: 3}
+    - target: {fileID: 6093495543207933029, guid: 1153e1defeb6f55429ec48f8fd753d94, type: 3}
+      propertyPath: potionsPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6043048747408770781, guid: b44d71db5b003b746861795a0046a889, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
