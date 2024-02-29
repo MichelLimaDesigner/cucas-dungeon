@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
 
   IEnumerator ChangeLevelTransition()
   {
+    LevelTransition.Instance.Transition();
     yield return new WaitForSeconds(1.5f);
     SceneManager.LoadScene(nextLevelName);
   }
@@ -96,12 +97,22 @@ public class GameManager : MonoBehaviour
         Debug.Log("FIM DE JOGO");
         break;
       case GameState.GameOver:
-        // Do something
+        ReloadScene();
         break;
       default:
         throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
     }
     OnGameStateChanged?.Invoke(newState);
+  }
+
+  // Função para recarregar a cena
+  private void ReloadScene()
+  {
+    // Obtém o índice da cena atual
+    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+    // Recarrega a cena atual
+    SceneManager.LoadScene(currentSceneIndex);
   }
 }
 

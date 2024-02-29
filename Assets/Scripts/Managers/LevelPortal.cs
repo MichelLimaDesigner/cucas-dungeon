@@ -19,7 +19,7 @@ public class LevelPortal : MonoBehaviour
 
   IEnumerator FinishLevel()
   {
+    yield return new WaitForSeconds(1);
     GameManager.Instance.HandleFinishStage();
-    yield return new WaitForSeconds(3);
   }
 }
