@@ -8,12 +8,18 @@ public class InGameMenuManager : MonoBehaviour
   [SerializeField] private GameObject inGameMenu;
   [SerializeField] private PlayerSO playerData;
   [SerializeField] private TextMeshProUGUI charName;
+  [SerializeField] private TextMeshProUGUI switchCount;
   public static InGameMenuManager Instance;
 
   void Awake()
   {
     Instance = this;
     GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+  }
+
+  void Start()
+  {
+    HandleSwitchesCount();
   }
 
   void OnDestroy()
@@ -25,6 +31,11 @@ public class InGameMenuManager : MonoBehaviour
   {
     inGameMenu.SetActive(state == GameState.Battle);
     if (state == GameState.Battle) HandleCharName();
+  }
+
+  public void HandleSwitchesCount()
+  {
+    switchCount.text = GameManager.Instance.switchersCount.ToString();
   }
 
   public void HandleCharName()

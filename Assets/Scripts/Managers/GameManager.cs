@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
   public GameState State;
   private CinemachineVirtualCamera vcam;
   private List<GameObject> levelSwitchers;
+  public int switchersCount;
   private int switchersActived = 0;
   public bool canPassLevel = false;
   public string nextLevelName;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     UpdateGameState(GameState.Battle);
     GameObject[] levelSwitcherArray = GameObject.FindGameObjectsWithTag("LevelSwitch");
     levelSwitchers = new List<GameObject>(levelSwitcherArray);
+    switchersCount = levelSwitchers.Count;
   }
 
   public void HandleCameraPlayer(GameObject player)
@@ -49,6 +51,8 @@ public class GameManager : MonoBehaviour
   public void HandleLevelPortal()
   {
     switchersActived += 1;
+    switchersCount -= 1;
+    InGameMenuManager.Instance.HandleSwitchesCount();
     if (switchersActived == levelSwitchers.Count)
     {
       canPassLevel = true;
