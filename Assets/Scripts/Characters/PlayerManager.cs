@@ -39,7 +39,6 @@ public class PlayerManager : MonoBehaviour
   {
     Transform transf = characterInstance.transform;
     GameObject character = playerData.prefab;
-    DestroyChar();
     Player.Instance.transformationAnim.SetActive(true); // Transformation animation
     StartCoroutine(InstantiateChar(character, transf));
   }
@@ -49,21 +48,17 @@ public class PlayerManager : MonoBehaviour
   {
     Transform transf = characterInstance.transform;
     GameObject character = playerData.transformation.prefab;
-    DestroyChar();
-    Player.Instance.transformationAnim.SetActive(true); // Transformation animation
+    Player.Instance.transformationAnim.gameObject.SetActive(true); // Transformation animation
     StartCoroutine(InstantiateChar(character, transf));
-    // characterInstance = Instantiate(playerData.transformation.prefab, transf.position, Quaternion.identity);
-    // InGameMenuManager.Instance.HandleCharName();
-    // GameManager.Instance.HandleCameraPlayer(characterInstance);
   }
 
   IEnumerator InstantiateChar(GameObject character, Transform transf)
   {
+    yield return new WaitForSeconds(0.6f);
+    DestroyChar();
     characterInstance = Instantiate(character, transf.position, Quaternion.identity);
     InGameMenuManager.Instance.HandleCharName();
     GameManager.Instance.HandleCameraPlayer(characterInstance);
-    Player.Instance.transformationAnim.SetActive(false);
-    yield return new WaitForSeconds(0.8f);
   }
 
   // Function to destroy player instance in scene
