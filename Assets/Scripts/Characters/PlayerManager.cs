@@ -94,11 +94,11 @@ public class PlayerManager : MonoBehaviour
       Intangible();
       StartCoroutine(SetPlayerAsTangible());
     }
-    else if (!playerData.hasShield && playerData.transformation)
+    else if (!playerData.hasShield && playerData.transformation != null)
     {
+      playerData.transformation = default;
       SpawnChico();
       Intangible();
-      playerData.transformation = default;
       StartCoroutine(SetPlayerAsTangible());
     }
     else

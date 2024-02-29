@@ -6,12 +6,6 @@ public class LevelPortal : MonoBehaviour
 {
   public bool isActive = false;
   public Animator animator;
-  SpriteRenderer renderer;
-
-  void Start()
-  {
-    renderer = GetComponent<SpriteRenderer>();
-  }
 
   void OnTriggerEnter2D(Collider2D other)
   {

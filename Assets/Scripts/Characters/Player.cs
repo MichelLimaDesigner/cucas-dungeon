@@ -270,12 +270,7 @@ public class Player : MonoBehaviour
   // -------------------- Trigger functions
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Item"))
-    {
-      Debug.Log(other.gameObject.name);
-      // AddItemToInventory(other.gameObject.name);
-    }
-    else if (other.CompareTag("EnemyHeadHit"))
+    if (other.CompareTag("EnemyHeadHit"))
     {
       MiniJump();
     }

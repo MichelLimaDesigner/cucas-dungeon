@@ -10,7 +10,6 @@ public class LevelSwitch : MonoBehaviour
   void Start()
   {
     renderer = GetComponent<SpriteRenderer>();
-    renderer.color = new Color(0, 0, 0, 1);
   }
 
   void OnTriggerEnter2D(Collider2D others)

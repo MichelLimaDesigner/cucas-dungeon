@@ -159,8 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedEnemy: 3
   followDistance: 20
-  enemy: {fileID: 6804479279739321955}
-  maxHits: 5
+  player: {fileID: 0}
 --- !u!50 &5970677299087468474
 Rigidbody2D:
   serializedVersion: 4
@@ -187,4 +186,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
