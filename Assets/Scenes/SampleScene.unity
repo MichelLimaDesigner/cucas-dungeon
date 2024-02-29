@@ -3158,9 +3158,13 @@ PrefabInstance:
     - target: {fileID: 6093495543207933029, guid: 1153e1defeb6f55429ec48f8fd753d94, type: 3}
       propertyPath: potionsPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 6043048747408770781, guid: b44d71db5b003b746861795a0046a889, type: 3}
+      objectReference: {fileID: 7126758238556694353, guid: 0a6fb3c4a1c391641a2018abe9eca3eb, type: 3}
     - target: {fileID: 6093495543207933029, guid: 1153e1defeb6f55429ec48f8fd753d94, type: 3}
       propertyPath: potionsPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2254384668307316375, guid: 2c24b8b0aa86658498de85f1a0993264, type: 3}
+    - target: {fileID: 6093495543207933029, guid: 1153e1defeb6f55429ec48f8fd753d94, type: 3}
+      propertyPath: potionsPrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 7126758238556694353, guid: 0a6fb3c4a1c391641a2018abe9eca3eb, type: 3}
     m_RemovedComponents: []

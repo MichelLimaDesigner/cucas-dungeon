@@ -21,7 +21,7 @@ public class CururuAttack : MonoBehaviour
     {
       canShoot = false;
       Instantiate(bulletPrefab, firePoint.position, bulletPrefab.transform.rotation);
-      StartCoroutine(SetCanShoot(5));
+      StartCoroutine(SetCanShoot(2));
     }
   }
 

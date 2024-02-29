@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5924601900169838648}
   - component: {fileID: 2691490869616769254}
   - component: {fileID: 3798165300454526131}
+  - component: {fileID: 2737848748001715444}
   m_Layer: 0
   m_Name: Pomba Attack
   m_TagString: Attack
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.090196095, g: 0.46059927, b: 0.9254902, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4b400b708e4e3c14b9f3be7cdbb8f165, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -161,3 +162,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bcb0e84dc289f545b5a9f0c09dcb69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2737848748001715444
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550023238169395903}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb04b4ff40a0c70449cdcef4770d52eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
