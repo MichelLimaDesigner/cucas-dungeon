@@ -38,20 +38,32 @@ public class PlayerManager : MonoBehaviour
   public void SpawnChico()
   {
     Transform transf = characterInstance.transform;
+    GameObject character = playerData.prefab;
     DestroyChar();
-    characterInstance = Instantiate(playerData.prefab, transf.position, Quaternion.identity);
-    InGameMenuManager.Instance.HandleCharName();
-    GameManager.Instance.HandleCameraPlayer(characterInstance);
+    Player.Instance.transformationAnim.SetActive(true); // Transformation animation
+    StartCoroutine(InstantiateChar(character, transf));
   }
 
   // Function to spawn any Chico's transformation
   public void SpawnTransformation()
   {
     Transform transf = characterInstance.transform;
+    GameObject character = playerData.transformation.prefab;
     DestroyChar();
-    characterInstance = Instantiate(playerData.transformation.prefab, transf.position, Quaternion.identity);
+    Player.Instance.transformationAnim.SetActive(true); // Transformation animation
+    StartCoroutine(InstantiateChar(character, transf));
+    // characterInstance = Instantiate(playerData.transformation.prefab, transf.position, Quaternion.identity);
+    // InGameMenuManager.Instance.HandleCharName();
+    // GameManager.Instance.HandleCameraPlayer(characterInstance);
+  }
+
+  IEnumerator InstantiateChar(GameObject character, Transform transf)
+  {
+    characterInstance = Instantiate(character, transf.position, Quaternion.identity);
     InGameMenuManager.Instance.HandleCharName();
     GameManager.Instance.HandleCameraPlayer(characterInstance);
+    Player.Instance.transformationAnim.SetActive(false);
+    yield return new WaitForSeconds(0.8f);
   }
 
   // Function to destroy player instance in scene

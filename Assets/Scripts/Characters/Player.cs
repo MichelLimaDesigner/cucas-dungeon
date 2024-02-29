@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
   private Collider2D playerCollider;
   public GameObject bulletPrefab;
   public Animator animator;
+  public GameObject transformationAnim;
 
   // -------------------- Ground & wall system
   [Header("Ground and wall system")]
