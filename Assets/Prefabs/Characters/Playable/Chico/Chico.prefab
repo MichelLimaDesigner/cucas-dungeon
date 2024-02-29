@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 4752004437222830232}
   - component: {fileID: 6303320406610158852}
   - component: {fileID: 4005996639331834459}
+  - component: {fileID: 5616458258511400242}
   m_Layer: 0
   m_Name: Chico
   m_TagString: Player
@@ -243,8 +244,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1864119739
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 32c28dcdbfbac8d41bcc6204cb591f2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -455,11 +456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 11400000, guid: fca79c45f82083f4f8459ea43f7ee36a, type: 2}
-  itemsList:
-  - {fileID: 11400000, guid: c4df26c9b1c68ba4ba5b4dbcb3abb45f, type: 2}
-  - {fileID: 11400000, guid: 6c27bb64ac9d17749abb1652bed6b558, type: 2}
   isFacingRight: 1
   bulletPrefab: {fileID: 1924445341174877385, guid: ba9ad9a57ebc37e479a0121461431263, type: 3}
+  animator: {fileID: 5616458258511400242}
   wallSlidingSpeed: 1
   groundCheck: {fileID: 6426593614255291229}
   wallCheck: {fileID: 8562218687563093815}
@@ -471,3 +470,24 @@ MonoBehaviour:
   dashingVelocity: 7
   dashingTime: 0.1
   trailRenderer: {fileID: 0}
+--- !u!95 &5616458258511400242
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548190480868637026}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 970d5e0bef5ca4d4a90e838358cbf44e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
   private Rigidbody2D rig;
   private Collider2D playerCollider;
   public GameObject bulletPrefab;
-  ChicoAttack chicoAttack;
+  public Animator animator;
 
   // -------------------- Ground & wall system
   [Header("Ground and wall system")]
@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
     rig = GetComponent<Rigidbody2D>();
     playerCollider = GetComponent<Collider2D>();
     trailRenderer = GetComponent<TrailRenderer>();
-    chicoAttack = GetComponent<ChicoAttack>();
   }
 
   // -------------------- Update is called once per frame
@@ -92,6 +91,7 @@ public class Player : MonoBehaviour
   {
     Vector3 movement = new Vector3(move, 0f, 0f);
     transform.position += movement * Time.deltaTime * attributes.speed;
+    animator.SetFloat("Speed", Mathf.Abs(move)); // Set run animation
   }
 
   void Flip()
@@ -100,14 +100,12 @@ public class Player : MonoBehaviour
     {
       // Flip to Left
       isFacingRight = !isFacingRight;
-      if (chicoAttack) chicoAttack.FlipSphereParent();
       transform.Rotate(0f, 180f, 0f);
     }
     else if (move < 0 && isFacingRight)
     {
       // Flip to Right
       isFacingRight = !isFacingRight;
-      if (chicoAttack) chicoAttack.FlipSphereParent();
       transform.Rotate(0f, 180f, 0f);
     }
   }
@@ -115,6 +113,8 @@ public class Player : MonoBehaviour
   void Jump()
   {
     Vector2 velocity = rig.velocity;
+
+    animator.SetBool("isJumping", !isGrounded);
 
     if (Input.GetButtonDown("Jump"))
     {
