@@ -43,12 +43,12 @@ public class EnemyShootAttack : MonoBehaviour
     if (directionX > 0)
     {
       // Jogador à direita do inimigo
-      transform.localScale = new Vector3(1f, 1f, 1f); // Manter a escala original
+      transform.localScale = new Vector3(1.5f, 1.5f, 1.5f); // Manter a escala original
     }
     else if (directionX < 0)
     {
       // Jogador à esquerda do inimigo
-      transform.localScale = new Vector3(-1f, 1f, 1f); // Inverter a escala na direção X
+      transform.localScale = new Vector3(-1.5f, 1.5f, 1.5f); // Inverter a escala na direção X
     }
   }
 

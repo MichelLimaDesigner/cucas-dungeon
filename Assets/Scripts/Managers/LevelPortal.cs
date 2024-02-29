@@ -5,12 +5,12 @@ using UnityEngine;
 public class LevelPortal : MonoBehaviour
 {
   public bool isActive = false;
+  public Animator animator;
   SpriteRenderer renderer;
 
   void Start()
   {
     renderer = GetComponent<SpriteRenderer>();
-    renderer.color = new Color(0, 0, 0, 1);
   }
 
   void OnTriggerEnter2D(Collider2D other)
@@ -18,7 +18,7 @@ public class LevelPortal : MonoBehaviour
     if (other.CompareTag("Player") && GameManager.Instance.canPassLevel)
     {
       isActive = true;
-      renderer.color = new Color(52, 197, 44, 255);
+      animator.SetBool("isActive", true);
       StartCoroutine(FinishLevel());
     }
   }

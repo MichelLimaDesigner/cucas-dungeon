@@ -67,8 +67,14 @@ public class GameManager : MonoBehaviour
   void LoadNextScene()
   {
     // Load the next level scene if it exist
-    if (nextLevelName != null) SceneManager.LoadScene(nextLevelName);
+    if (nextLevelName != null) StartCoroutine(ChangeLevelTransition());
     else UpdateGameState(GameState.Finish);
+  }
+
+  IEnumerator ChangeLevelTransition()
+  {
+    yield return new WaitForSeconds(1.5f);
+    SceneManager.LoadScene(nextLevelName);
   }
 
   public void UpdateGameState(GameState newState)
