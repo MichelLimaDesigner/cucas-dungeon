@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
     musicSouce.clip = music;
     backgroundSouce.clip = background;
     musicSouce.Play();
-    backgroundSouce.Play();
+    // backgroundSouce.Play();
   }
 
   public void PlaySFX(AudioClip clip)
