@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPrefab: {fileID: 4724438096939270391, guid: e8111f2b6715b2b4b845c474922dc374, type: 3}
-  shootInterval: 1
+  shootInterval: 2
   rotationSpeed: 5
   spawnPoint: {fileID: 7240819503573686759}
   attackRadius: 3

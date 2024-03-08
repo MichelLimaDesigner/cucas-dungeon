@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5695693957528382634}
   - component: {fileID: 1211584319609101641}
   m_Layer: 0
-  m_Name: Teste 1
+  m_Name: Guarana Guarda
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
