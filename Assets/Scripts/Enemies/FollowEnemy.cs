@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class followEnemy : MonoBehaviour
 {
-  // private Transform playerPosition;
   public float speedEnemy;
-  public float followDistance = 5.0f; // A distância a partir da qual o inimigo começa a seguir o jogador.
-
+  public float followDistance = 5.0f;
+  public Animator animator;
   private bool isFollowing = false;
-  private bool isFacingRight = true; // Flag para verificar a direção em que o inimigo está voltado.
+  private bool isFacingRight = true;
   // public GameObject enemy;
   private SpriteRenderer enemySpriteRenderer;
-  // private bool canTakeDamage = true; // Flag para verificar a direção em que o inimigo está voltado.
+  // private bool canTakeDamage = true;
   // private int currentHits = 0; // Contagem atual de tiros recebidos
   // public int maxHits = 5; // Número máximo de vezes que o inimigo pode ser atingido.
   public GameObject player;
@@ -56,6 +55,8 @@ public class followEnemy : MonoBehaviour
       {
         followPlayer();
       }
+
+      if (animator) animator.SetBool("IsFollowing", isFollowing);
     }
     else if (GameManager.Instance.State != GameState.GameOver)
     {
