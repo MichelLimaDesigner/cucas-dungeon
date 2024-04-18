@@ -24,17 +24,10 @@ public class Player : MonoBehaviour
   AudioManager audioManager;
 
   // -------------------- Ground & wall system
-  [Header("Ground and wall system")]
+  [Header("Ground system")]
   private bool isGrounded;
-  private bool isWallTouch;
-  private bool isSliding;
-  public float wallSlidingSpeed;
   public Transform groundCheck;
-  public Transform wallCheck;
   public LayerMask groundLayer;
-  public float wallJumpDuration;
-  public Vector2 wallJumpForce;
-  bool wallJumping;
 
 
   // -------------------- Dashing properties
@@ -66,16 +59,12 @@ public class Player : MonoBehaviour
     // -------------------- Variables
     move = Input.GetAxis("Horizontal");
     jump = Input.GetButtonUp("Jump");
-    isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(0.3f, 0.1f), 0, groundLayer);
-    isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.1f, 0.4f), 0, groundLayer);
+    isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(0.2f, 0.1f), 0, groundLayer);
 
-    if (isWallTouch && !isGrounded && move != 0) isSliding = true;
-    else isSliding = false;
     // -------------------- Methods
     Flip();
     Jump();
     Dash();
-    WallSliding();
 
     // -------------------- Return if player die's
     if (!active)
@@ -127,11 +116,6 @@ public class Player : MonoBehaviour
         velocity.y = attributes.jumpForce;
         rig.velocity = velocity;
       }
-      else if (isSliding)
-      {
-        wallJumping = true;
-        Invoke("StopWallJump", wallJumpDuration);
-      }
       else if (!isGrounded && attributes.canFly)
       {
         // Se estiver no ar, aplica uma força para simular o voo.
@@ -144,27 +128,6 @@ public class Player : MonoBehaviour
     {
       velocity.y = 0;
       rig.velocity = velocity;
-    }
-
-    if (wallJumping)
-    {
-      rig.velocity = new Vector2(-move * wallJumpForce.x, wallJumpForce.y);
-    }
-
-  }
-
-  void StopWallJump()
-  {
-    wallJumping = false;
-  }
-
-  // -------------------- Wall Sligins
-
-  void WallSliding()
-  {
-    if (isSliding)
-    {
-      rig.velocity = new Vector2(rig.velocity.x, Mathf.Clamp(rig.velocity.y, -wallSlidingSpeed, float.MaxValue));
     }
   }
 
