@@ -29,16 +29,6 @@ public class Player : MonoBehaviour
   public Transform groundCheck;
   public LayerMask groundLayer;
 
-
-  // -------------------- Dashing properties
-  [Header("Dashing")]
-  public float dashingVelocity = 5f;
-  public float dashingTime = 0.1f;
-  public TrailRenderer trailRenderer;
-  private Vector2 dashingDir;
-  private bool isDashing = false;
-  private bool canDash = true;
-
   void Awake()
   {
     Instance = this;
@@ -50,7 +40,6 @@ public class Player : MonoBehaviour
   {
     rig = GetComponent<Rigidbody2D>();
     playerCollider = GetComponent<Collider2D>();
-    trailRenderer = GetComponent<TrailRenderer>();
   }
 
   // -------------------- Update is called once per frame
@@ -64,7 +53,6 @@ public class Player : MonoBehaviour
     // -------------------- Methods
     Flip();
     Jump();
-    Dash();
 
     // -------------------- Return if player die's
     if (!active)
@@ -131,65 +119,6 @@ public class Player : MonoBehaviour
     }
   }
 
-  // -------------------- Dashing
-
-  private void Dash()
-  {
-    if (Input.GetButtonDown("Dash") && canDash)
-    {
-      isDashing = true;
-      canDash = false;
-      trailRenderer.emitting = true;
-      float dir;
-
-      // Quando o jogador está parado
-      if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
-      {
-        dir = isFacingRight ? 1f : -1f;
-      }
-      // Quando o jogador usa o dash para cima ou para baixo
-      else if (Input.GetAxisRaw("Horizontal") == 0)
-      {
-        dir = 0f;
-      }
-      // Quando o jogador está apontando uma direção
-      else
-      {
-        dir = move;
-      }
-
-      dashingDir = new Vector2(dir, Input.GetAxisRaw("Vertical"));
-
-      if (dashingDir == Vector2.zero)
-      {
-        dashingDir = new Vector2(transform.localScale.x, 0);
-      }
-
-      StartCoroutine(StopDashing());
-    }
-
-    if (isDashing)
-    {
-      rig.velocity = dashingDir.normalized * dashingVelocity;
-      return;
-    }
-  }
-
-
-  IEnumerator StopDashing()
-  {
-    yield return new WaitForSeconds(dashingTime);
-    trailRenderer.emitting = false;
-    isDashing = false;
-    var velocity = rig.velocity;
-    velocity.x = 0;
-    rig.velocity = velocity;
-    if (isGrounded)
-    {
-      canDash = true;
-    }
-  }
-
   // -------------------- Die
 
   public void MiniJump()
@@ -203,11 +132,6 @@ public class Player : MonoBehaviour
   // -------------------- Collision functions
   private void OnCollisionEnter2D(Collision2D others)
   {
-    // Player is on ground
-    if (others.gameObject.layer == 6)
-    {
-      if (!isDashing) canDash = true;
-    }
     if (others.gameObject.CompareTag("Enemy"))
     {
       if (!PlayerManager.Instance.isIntangible) PlayerManager.Instance.TakeDamage();
