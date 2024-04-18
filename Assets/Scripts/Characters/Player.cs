@@ -173,12 +173,6 @@ public class Player : MonoBehaviour
       rig.velocity = dashingDir.normalized * dashingVelocity;
       return;
     }
-
-    // ------------------ Implementar 
-    // if(isGrounded)
-    // {
-    //   canDash = true;
-    // }
   }
 
 
@@ -236,11 +230,7 @@ public class Player : MonoBehaviour
   // -------------------- Trigger functions
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("EnemyHeadHit"))
-    {
-      MiniJump();
-    }
-    else if (other.CompareTag("Damage"))
+    if (other.CompareTag("Damage"))
     {
       if (!PlayerManager.Instance.isIntangible)
       {
